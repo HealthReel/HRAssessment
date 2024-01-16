@@ -1,0 +1,237 @@
+
+/* Class = "UILabel"; text = "Tap on data point for more information"; ObjectID = "0AU-if-5Ab"; */
+"0AU-if-5Ab.text" = "Tap on data point for more information";
+
+/* Class = "UILabel"; text = "10.0"; ObjectID = "0Pe-Pz-aqP"; */
+"0Pe-Pz-aqP.text" = "10.0";
+
+/* Class = "UILabel"; text = "%"; ObjectID = "0Vv-hC-Zrx"; */
+"0Vv-hC-Zrx.text" = "%";
+
+/* Class = "UILabel"; text = "Normal"; ObjectID = "1Ox-JA-PkU"; */
+"1Ox-JA-PkU.text" = "Normal";
+
+/* Class = "UIButton"; configuration.title = "Start Assessment - Female"; ObjectID = "5e8-nY-KXn"; */
+"5e8-nY-KXn.configuration.title" = "Start Assessment - Female";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "5e8-nY-KXn"; */
+"5e8-nY-KXn.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Are you worried or concerned..."; ObjectID = "7HC-Ks-0ac"; */
+"7HC-Ks-0ac.text" = "Are you worried or concerned...";
+
+/* Class = "UILabel"; text = "You’ll be presented with 21 statements. Please read each statement and select a number 0, 1, 2 or 3 which indicates how much the statement applied to you over the past week. There are no right or wrong answers."; ObjectID = "7JP-YQ-KDP"; */
+"7JP-YQ-KDP.text" = "You’ll be presented with 21 statements. Please read each statement and select a number 0, 1, 2 or 3 which indicates how much the statement applied to you over the past week. There are no right or wrong answers.";
+
+/* Class = "UILabel"; text = "Social Needs"; ObjectID = "7kR-24-ufJ"; */
+"7kR-24-ufJ.text" = "Social Needs";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7lm-xP-PAU"; */
+"7lm-xP-PAU.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7wH-AP-AeV"; */
+"7wH-AP-AeV.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "X"; ObjectID = "8lw-jt-B2b"; */
+"8lw-jt-B2b.configuration.title" = "X";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "8lw-jt-B2b"; */
+"8lw-jt-B2b.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Body Weight"; ObjectID = "9Jc-9g-N18"; */
+"9Jc-9g-N18.configuration.title" = "Body Weight";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "9Jc-9g-N18"; */
+"9Jc-9g-N18.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Little or no excercise, desk job."; ObjectID = "9r5-NN-U5x"; */
+"9r5-NN-U5x.text" = "Little or no excercise, desk job.";
+
+/* Class = "UILabel"; text = "%"; ObjectID = "A1d-rl-uR3"; */
+"A1d-rl-uR3.text" = "%";
+
+/* Class = "UILabel"; text = "Select All which applies to you "; ObjectID = "ASO-lI-Tjd"; */
+"ASO-lI-Tjd.text" = "Select All which applies to you ";
+
+/* Class = "UILabel"; text = "Are you pregnant?"; ObjectID = "Aei-yY-zJ0"; */
+"Aei-yY-zJ0.text" = "Are you pregnant?";
+
+/* Class = "UILabel"; text = "14 Aug"; ObjectID = "Anx-Xy-UVU"; */
+"Anx-Xy-UVU.text" = "14 Aug";
+
+/* Class = "UILabel"; text = "High Risk Factors"; ObjectID = "Bps-WL-odk"; */
+"Bps-WL-odk.text" = "High Risk Factors";
+
+/* Class = "UIButton"; configuration.title = "Corrected BMI"; ObjectID = "Cfo-SU-cj4"; */
+"Cfo-SU-cj4.configuration.title" = "Corrected BMI";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Cfo-SU-cj4"; */
+"Cfo-SU-cj4.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Next"; ObjectID = "DUk-YB-34A"; */
+"DUk-YB-34A.configuration.title" = "Next";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "DUk-YB-34A"; */
+"DUk-YB-34A.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "1/15"; ObjectID = "E4G-uJ-ygD"; */
+"E4G-uJ-ygD.text" = "1/15";
+
+/* Class = "UIButton"; configuration.title = "2"; ObjectID = "E59-Gt-zMv"; */
+"E59-Gt-zMv.configuration.title" = "2";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "E59-Gt-zMv"; */
+"E59-Gt-zMv.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Sedentary"; ObjectID = "EkK-Od-5O2"; */
+"EkK-Od-5O2.text" = "Sedentary";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "FI2-MY-1vn"; */
+"FI2-MY-1vn.text" = "Title";
+
+/* Class = "UILabel"; text = "Spin"; ObjectID = "FPd-6i-iZM"; */
+"FPd-6i-iZM.text" = "Spin";
+
+/* Class = "UILabel"; text = "Yes"; ObjectID = "Gh0-7E-egg"; */
+"Gh0-7E-egg.text" = "Yes";
+
+/* Class = "UIButton"; configuration.title = "1"; ObjectID = "HZz-LB-WxI"; */
+"HZz-LB-WxI.configuration.title" = "1";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "HZz-LB-WxI"; */
+"HZz-LB-WxI.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Complete Health Score"; ObjectID = "Hfj-sW-X2e"; */
+"Hfj-sW-X2e.text" = "Complete Health Score";
+
+/* Class = "UIButton"; configuration.title = "View Chart"; ObjectID = "IhY-QN-F1v"; */
+"IhY-QN-F1v.configuration.title" = "View Chart";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "IhY-QN-F1v"; */
+"IhY-QN-F1v.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "REC"; ObjectID = "LBI-KJ-1tB"; */
+"LBI-KJ-1tB.text" = "REC";
+
+/* Class = "UILabel"; text = "I found it hard to wind down"; ObjectID = "OPX-Kt-a4b"; */
+"OPX-Kt-a4b.text" = "I found it hard to wind down";
+
+/* Class = "UILabel"; text = "Q1."; ObjectID = "Q6i-V0-ktn"; */
+"Q6i-V0-ktn.text" = "Q1.";
+
+/* Class = "UIButton"; configuration.title = "0"; ObjectID = "R9m-du-ChY"; */
+"R9m-du-ChY.configuration.title" = "0";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "R9m-du-ChY"; */
+"R9m-du-ChY.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Recommended"; ObjectID = "RkS-rJ-uo5"; */
+"RkS-rJ-uo5.text" = "Recommended";
+
+/* Class = "UIButton"; configuration.title = "No"; ObjectID = "RzB-Rh-yAN"; */
+"RzB-Rh-yAN.configuration.title" = "No";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "RzB-Rh-yAN"; */
+"RzB-Rh-yAN.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "T4l-gq-rfm"; */
+"T4l-gq-rfm.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = "Yes"; ObjectID = "UjY-sf-iwy"; */
+"UjY-sf-iwy.configuration.title" = "Yes";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "UjY-sf-iwy"; */
+"UjY-sf-iwy.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "View Report"; ObjectID = "W2r-io-gQF"; */
+"W2r-io-gQF.configuration.title" = "View Report";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "W2r-io-gQF"; */
+"W2r-io-gQF.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Current"; ObjectID = "W6J-M8-LJR"; */
+"W6J-M8-LJR.text" = "Current";
+
+/* Class = "UILabel"; text = "Body Composition"; ObjectID = "Wyu-yO-0uR"; */
+"Wyu-yO-0uR.text" = "Body Composition";
+
+/* Class = "UILabel"; text = "1.0"; ObjectID = "bTR-57-oWE"; */
+"bTR-57-oWE.text" = "1.0";
+
+/* Class = "UILabel"; text = "Depression, Anxiety and Stress Scale"; ObjectID = "dLv-fp-0tu"; */
+"dLv-fp-0tu.text" = "Depression, Anxiety and Stress Scale";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dbr-3G-zpz"; */
+"dbr-3G-zpz.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "eQi-1M-3pZ"; */
+"eQi-1M-3pZ.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Start Assessment - Male"; ObjectID = "ebx-ZP-FOE"; */
+"ebx-ZP-FOE.configuration.title" = "Start Assessment - Male";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ebx-ZP-FOE"; */
+"ebx-ZP-FOE.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Skip SDOH Assessment"; ObjectID = "g2O-4w-PgC"; */
+"g2O-4w-PgC.configuration.title" = "Skip SDOH Assessment";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "g2O-4w-PgC"; */
+"g2O-4w-PgC.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Do not spend too much time on any statement."; ObjectID = "kTI-tI-Zss"; */
+"kTI-tI-Zss.text" = "Do not spend too much time on any statement.";
+
+/* Class = "UIButton"; configuration.title = "Body Fat"; ObjectID = "kfD-3a-B0L"; */
+"kfD-3a-B0L.configuration.title" = "Body Fat";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "kfD-3a-B0L"; */
+"kfD-3a-B0L.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "The rating scale is as follows:"; ObjectID = "l39-T7-WK5"; */
+"l39-T7-WK5.text" = "The rating scale is as follows:";
+
+/* Class = "UIButton"; configuration.title = "3"; ObjectID = "m3A-jJ-oy8"; */
+"m3A-jJ-oy8.configuration.title" = "3";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "m3A-jJ-oy8"; */
+"m3A-jJ-oy8.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Pre-eclampsia Risk Factor"; ObjectID = "nbs-2E-qR9"; */
+"nbs-2E-qR9.text" = "Pre-eclampsia Risk Factor";
+
+/* Class = "UILabel"; text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiu id est laborum."; ObjectID = "nkp-E6-HLt"; */
+"nkp-E6-HLt.text" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiu id est laborum.";
+
+/* Class = "UILabel"; text = "Please select your weight by scrolling up or down on the scale"; ObjectID = "ow7-mk-AVu"; */
+"ow7-mk-AVu.text" = "Please select your weight by scrolling up or down on the scale";
+
+/* Class = "UILabel"; text = "8.9"; ObjectID = "rPC-bV-IcK"; */
+"rPC-bV-IcK.text" = "8.9";
+
+/* Class = "UILabel"; text = "Please choose your activity level"; ObjectID = "ugb-80-wgw"; */
+"ugb-80-wgw.text" = "Please choose your activity level";
+
+/* Class = "UILabel"; text = "lbs"; ObjectID = "wgi-kO-6ay"; */
+"wgi-kO-6ay.text" = "lbs";
+
+/* Class = "UILabel"; text = "Please answer the questions below on a scale of 1 to 10. 1 is low and 10 is high."; ObjectID = "x0q-0P-nsO"; */
+"x0q-0P-nsO.text" = "Please answer the questions below on a scale of 1 to 10. 1 is low and 10 is high.";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "xC6-eS-GbS"; */
+"xC6-eS-GbS.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Heading"; ObjectID = "xpK-LZ-W8B"; */
+"xpK-LZ-W8B.text" = "Heading";
+
+/* Class = "UILabel"; text = "Mental & Emotional"; ObjectID = "ypC-IN-O1g"; */
+"ypC-IN-O1g.text" = "Mental & Emotional";
+
+/* Class = "UIButton"; configuration.title = "Start"; ObjectID = "zOA-bm-UFl"; */
+"zOA-bm-UFl.configuration.title" = "Start";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zOA-bm-UFl"; */
+"zOA-bm-UFl.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Are you ready and committed to adopt a routine that will improve your long-term health?"; ObjectID = "za4-mV-SlF"; */
+"za4-mV-SlF.text" = "Are you ready and committed to adopt a routine that will improve your long-term health?";

@@ -1,0 +1,6 @@
+framework module HRAssessment {
+  umbrella header "HRAssessment-umbrella.h"
+
+  export *
+  module * { export * }
+}

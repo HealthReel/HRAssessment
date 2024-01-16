@@ -1,0 +1,25 @@
+PODS:
+  - DGCharts (5.0.0):
+    - DGCharts/Core (= 5.0.0)
+  - DGCharts/Core (5.0.0)
+  - HRAssessment (1.0.0):
+    - DGCharts
+
+DEPENDENCIES:
+  - HRAssessment (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - DGCharts
+
+EXTERNAL SOURCES:
+  HRAssessment:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DGCharts: 6e0cf2644e8f81ad13f04caa8bc18502870a1c54
+  HRAssessment: c15266a9c880f47e433d4de82fb3bdd72ab5c88c
+
+PODFILE CHECKSUM: afda85a6d4bbe6bc4f849f1482609ad7fbcd2e2c
+
+COCOAPODS: 1.14.3

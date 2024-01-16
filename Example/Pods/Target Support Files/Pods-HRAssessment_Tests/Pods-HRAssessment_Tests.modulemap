@@ -1,0 +1,6 @@
+framework module Pods_HRAssessment_Tests {
+  umbrella header "Pods-HRAssessment_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "HRAssessment",
+  "version": "1.0.0",
+  "summary": "HealthReel Assessment Pod for InovCares",
+  "homepage": "https://github.com/HealthReel/HRAssessment",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "HealthReel": "developers@healthreel.com"
+  },
+  "source": {
+    "git": "https://github.com/HealthReel/HRAssessment.git"
+  },
+  "platforms": {
+    "ios": "15.0"
+  },
+  "source_files": "HRAssessment/Classes/**/*.swift",
+  "swift_versions": "5.0",
+  "resources": [
+    "HRAssessment/Assets.xcassets",
+    "HRAssessment/Classes/Resources/Fonts/**/*.{ttf}",
+    "HRAssessment/Classes/Resources/*.{mp3,mp4,gif,xcstrings}",
+    "HRAssessment/Classes/Views/**/*.{storyboard,strings}"
+  ],
+  "resource_bundles": {
+    "HRAssessment": [
+      "HRAssessment/Assets.xcassets",
+      "HRAssessment/Classes/Resources/Fonts/**/*.{ttf}",
+      "HRAssessment/Classes/Resources/*.{mp3,mp4,gif,xcstrings}",
+      "HRAssessment/Classes/Views/**/*.{storyboard,strings}"
+    ]
+  },
+  "dependencies": {
+    "DGCharts": [
+
+    ]
+  },
+  "swift_version": "5.0"
+}

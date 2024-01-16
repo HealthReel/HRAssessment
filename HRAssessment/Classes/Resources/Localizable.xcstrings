@@ -1,0 +1,886 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "camera.alert.ok" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "camera.alert.recording_completion_msg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To use this video recording tap OK. To reshoot your video tap Reshoot."
+          }
+        }
+      }
+    },
+    "camera.alert.reshoot" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reshoot"
+          }
+        }
+      }
+    },
+    "camera.instructions.1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone is under the window or a well lit room"
+          }
+        }
+      }
+    },
+    "camera.instructions.2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take 2 steps away from your phone"
+          }
+        }
+      }
+    },
+    "camera.instructions.3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Position Yourself"
+          }
+        }
+      }
+    },
+    "camera.instructions.4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No windows or lights in the background"
+          }
+        }
+      }
+    },
+    "camera.instructions.5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bellybutton is visible"
+          }
+        }
+      }
+    },
+    "camera.loader.pose" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pose"
+          }
+        }
+      }
+    },
+    "camera.loader.spin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spin"
+          }
+        }
+      }
+    },
+    "camera.start_recording" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Recording"
+          }
+        }
+      }
+    },
+    "camera.watch_again" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Watch Again"
+          }
+        }
+      }
+    },
+    "dass.q1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I found it hard to wind down"
+          }
+        }
+      }
+    },
+    "dass.q2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I was aware of dryness of my mouth"
+          }
+        }
+      }
+    },
+    "dass.q3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I couldn’t seem to experience any positive feeling at all"
+          }
+        }
+      }
+    },
+    "dass.q4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I experienced breathing difficulty (e.g. excessively rapid breathing, breathlessness in the absence of physical exertion)"
+          }
+        }
+      }
+    },
+    "dass.q5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I just couldn't seem to get going"
+          }
+        }
+      }
+    },
+    "dass.q6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I tended to over-react to situations"
+          }
+        }
+      }
+    },
+    "dass.q7" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I had a feeling of shakiness (e.g. legs going to give way)"
+          }
+        }
+      }
+    },
+    "dass.q8" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I found it difficult to relax"
+          }
+        }
+      }
+    },
+    "dass.q9" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I found myself in situations that made me so anxious I was most relieved when they ended"
+          }
+        }
+      }
+    },
+    "dass.q10" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I felt that I had nothing to look forward to"
+          }
+        }
+      }
+    },
+    "dass.q11" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I found myself getting upset rather easily"
+          }
+        }
+      }
+    },
+    "dass.q12" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I felt that I was using a lot of nervous energy"
+          }
+        }
+      }
+    },
+    "dass.q13" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I felt sad and depressed"
+          }
+        }
+      }
+    },
+    "dass.q14" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I found myself getting impatient when I was delayed in any way (e.g. elevators, traffic lights, being kept waiting)"
+          }
+        }
+      }
+    },
+    "dass.q15" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I had a feeling of faintness"
+          }
+        }
+      }
+    },
+    "dass.q16" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I felt that I had lost interest in just about everything"
+          }
+        }
+      }
+    },
+    "dass.q17" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I felt I wasn't worth much as a person"
+          }
+        }
+      }
+    },
+    "dass.q18" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I felt that I was rather touchy"
+          }
+        }
+      }
+    },
+    "dass.q19" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I perspired noticeably (e.g. hands sweaty) in the absence of high temperatres or physical exertion"
+          }
+        }
+      }
+    },
+    "dass.q20" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I felt scared without any good reason"
+          }
+        }
+      }
+    },
+    "dass.q21" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I felt that life wasn't worthwhile"
+          }
+        }
+      }
+    },
+    "nav.title.activity_level" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activity Level"
+          }
+        }
+      }
+    },
+    "nav.title.body_weight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Body Weight"
+          }
+        }
+      }
+    },
+    "nav.title.how_to_record" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to Record"
+          }
+        }
+      }
+    },
+    "nav.title.mental_emotional" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mental & Emotional"
+          }
+        }
+      }
+    },
+    "nav.title.preeclampsia_risk_estimation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pre-eclampsia Risk Estimation"
+          }
+        }
+      }
+    },
+    "nav.title.self_health_readiness" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Self-Health Readiness"
+          }
+        }
+      }
+    },
+    "nav.title.social_needs_screening" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Social Needs Screening"
+          }
+        }
+      }
+    },
+    "nav.title.video_recording" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Video Recording"
+          }
+        }
+      }
+    },
+    "skip.title.mental_emotional_assessment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip Mental & Emotional Assessment"
+          }
+        }
+      }
+    },
+    "skip.title.sdoh_assessment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip SDOH Assessment"
+          }
+        }
+      }
+    },
+    "socialneeds.assisstance.q1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Would you like help with any of these needs?"
+          }
+        }
+      }
+    },
+    "socialneeds.assisstance.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ASSISTANCE"
+          }
+        }
+      }
+    },
+    "socialneeds.childCare.Q1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do problems getting child care make it difficult for you to work or study?"
+          }
+        }
+      }
+    },
+    "socialneeds.childCare.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CHILD CARE"
+          }
+        }
+      }
+    },
+    "socialneeds.education.q1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you have a high school degree?"
+          }
+        }
+      }
+    },
+    "socialneeds.education.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EDUCATION"
+          }
+        }
+      }
+    },
+    "socialneeds.employment.q1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you have a job?"
+          }
+        }
+      }
+    },
+    "socialneeds.employment.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EMPLOYMENT"
+          }
+        }
+      }
+    },
+    "socialneeds.finances.q1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How often does this describe you? I don’t have enough money to pay my bills."
+          }
+        }
+      }
+    },
+    "socialneeds.finances.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FINANCES"
+          }
+        }
+      }
+    },
+    "socialneeds.food.q1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Within the past 12 months, you worried that your food would run out before you got money to buy more."
+          }
+        }
+      }
+    },
+    "socialneeds.food.q2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Within the past 12 months, the food you bought just didn’t last and you didn’t have money to get more."
+          }
+        }
+      }
+    },
+    "socialneeds.food.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOOD"
+          }
+        }
+      }
+    },
+    "socialneeds.housing.q1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you worried or concerned that in the next two months you may not have stable housing that you own, rent, or stay in as a part of a household?"
+          }
+        }
+      }
+    },
+    "socialneeds.housing.q2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Think about the place you live. Do you have problems with any of the following? (check all that apply)"
+          }
+        }
+      }
+    },
+    "socialneeds.housing.q2.subtext" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Bug infestation or Mold\n• Inadequate heat\n• Lead paint or pipes\n• Water Leaks\n• Oven or stove not working\n• No or not working smoke detectors"
+          }
+        }
+      }
+    },
+    "socialneeds.housing.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HOUSING"
+          }
+        }
+      }
+    },
+    "socialneeds.option.alreadyShutOff" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Already shut off"
+          }
+        }
+      }
+    },
+    "socialneeds.option.always" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Always"
+          }
+        }
+      }
+    },
+    "socialneeds.option.never" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Never"
+          }
+        }
+      }
+    },
+    "socialneeds.option.neverTrue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Never true"
+          }
+        }
+      }
+    },
+    "socialneeds.option.no" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        }
+      }
+    },
+    "socialneeds.option.often" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Often"
+          }
+        }
+      }
+    },
+    "socialneeds.option.oftenTrue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Often true"
+          }
+        }
+      }
+    },
+    "socialneeds.option.rarely" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rarely"
+          }
+        }
+      }
+    },
+    "socialneeds.option.sometimes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sometimes"
+          }
+        }
+      }
+    },
+    "socialneeds.option.sometimesTrue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sometimes true"
+          }
+        }
+      }
+    },
+    "socialneeds.option.yes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        }
+      }
+    },
+    "socialneeds.personalSafety.q1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How often does anyone, including family, physically hurt you?"
+          }
+        }
+      }
+    },
+    "socialneeds.personalSafety.q2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How often does anyone, including family, insult or talk down to you?"
+          }
+        }
+      }
+    },
+    "socialneeds.personalSafety.q3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How often does anyone, including family, threaten you with harm?"
+          }
+        }
+      }
+    },
+    "socialneeds.personalSafety.q4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How often does anyone, including family, scream or curse at you?"
+          }
+        }
+      }
+    },
+    "socialneeds.personalSafety.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PERSONAL SAFETY"
+          }
+        }
+      }
+    },
+    "socialneeds.transportation.q1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you put off or neglect going to the doctor because of distance or transportation?"
+          }
+        }
+      }
+    },
+    "socialneeds.transportation.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TRANSPORTATION"
+          }
+        }
+      }
+    },
+    "socialneeds.utilities.q1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the past 12 months has the electric, gas, oil, or water company threatened to shut off services in your home?"
+          }
+        }
+      }
+    },
+    "socialneeds.utilities.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UTILITIES"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
