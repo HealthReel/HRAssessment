@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "DGCharts": [
-
+      "~> 5.0.0"
     ]
   },
   "swift_version": "5.0"

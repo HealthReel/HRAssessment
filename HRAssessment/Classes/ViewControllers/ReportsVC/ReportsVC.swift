@@ -55,22 +55,14 @@ final class ReportVC: BaseVC {
         )
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-            
-        // Calculate the total content height of the table view
-        let totalContentHeight = calculateContentHeight()
-        print("Total content height: \(totalContentHeight)")
-    }
-    
     // MARK: Actions
     override func onTapNavBarShareButton() {
-        if let screenshot = takeScreenshot(of: scrollView) {
+        if let screenshot = tableView.screenshot {
             // Convert the image to PDF data
-            if let pdfData = convertImageToPDF(image: screenshot) {
+            if let pdfData = screenshot.convertToPDF() {
                 // Save the PDF data to a file
                 let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                let pdfURL = documentsDirectory.appendingPathComponent("report.pdf")
+                let pdfURL = documentsDirectory.appendingPathComponent("InovCare Health Report.pdf")
                 try? pdfData.write(to: pdfURL)
                 
                 // Share the PDF file
@@ -159,66 +151,6 @@ extension ReportVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
 
 // MARK: Share PDF Functions
 extension ReportVC {
-    private func takeScreenshot(of scrollView: UIScrollView) -> UIImage? {
-        // Save the current content offset and frame of the scroll view
-        let savedContentOffset = scrollView.contentOffset
-        let savedFrame = scrollView.frame
-        
-        // Set the content offset to the top-left corner
-        scrollView.contentOffset = .zero
-        
-        // Set the frame to match the content size
-        scrollView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
-        
-        // Begin image context
-        UIGraphicsBeginImageContext(scrollView.contentSize)
-        
-        // Check if the current context is not nil
-        if let context = UIGraphicsGetCurrentContext() {
-            // Render the entire content of the scroll view in the current context
-            scrollView.layer.render(in: context)
-            
-            // Get the image from the current context
-            if let screenshot = UIGraphicsGetImageFromCurrentImageContext() {
-                // End the image context
-                UIGraphicsEndImageContext()
-                
-                // Restore the saved content offset and frame
-                scrollView.contentOffset = savedContentOffset
-                scrollView.frame = savedFrame
-                
-                return screenshot
-            }
-        }
-        
-        // End the image context if it was created
-        UIGraphicsEndImageContext()
-        
-        // Restore the saved content offset and frame
-        scrollView.contentOffset = savedContentOffset
-        scrollView.frame = savedFrame
-        
-        return nil
-    }
-    
-    /// Covert Image to PDF
-    private func convertImageToPDF(image: UIImage) -> Data? {
-        // Create a PDF document
-        let pdfDocument = NSMutableData()
-        UIGraphicsBeginPDFContextToData(pdfDocument, CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height), nil)
-        
-        // Begin a PDF page
-        UIGraphicsBeginPDFPage()
-        
-        // Draw the image in the PDF context
-        image.draw(at: .zero)
-        
-        // End the PDF context
-        UIGraphicsEndPDFContext()
-        
-        return pdfDocument as Data
-    }
-    
     /// Share PDF
     private func sharePDF(pdfURL: URL) {
         // Create an activity view controller with the PDF URL
@@ -226,29 +158,5 @@ extension ReportVC {
         
         // Present the activity view controller
         present(activityViewController, animated: true, completion: nil)
-    }
-    
-    /// Calculate Content Height
-    private func calculateContentHeight() -> CGFloat {
-        var totalContentHeight: CGFloat = 0
-        
-        // Add the heights of the headers
-        for section in 0..<tableView.numberOfSections {
-            totalContentHeight += tableView.rectForHeader(inSection: section).height
-        }
-        
-        // Add the heights of the cells
-        for section in 0..<tableView.numberOfSections {
-            for row in 0..<tableView.numberOfRows(inSection: section) {
-                totalContentHeight += tableView.rectForRow(at: IndexPath(row: row, section: section)).height
-            }
-        }
-        
-        // Add the heights of the footers
-        for section in 0..<tableView.numberOfSections {
-            totalContentHeight += tableView.rectForFooter(inSection: section).height
-        }
-        
-        return totalContentHeight
     }
 }
