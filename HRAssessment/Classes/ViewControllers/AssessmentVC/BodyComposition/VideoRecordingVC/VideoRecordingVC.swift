@@ -62,8 +62,7 @@ final class VideoRecordingVC: BaseVC {
     private lazy var counterLabel: UILabel = {
         let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         lbl.center = view.center
-        lbl.textAlignment = .center
-        lbl.font = UIFont.systemFont(ofSize: 40)
+        lbl.screenInstructionify()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.isHidden = true
         return lbl
@@ -112,9 +111,11 @@ final class VideoRecordingVC: BaseVC {
         imgRecording.isHidden = true
         lblRecording.isHidden = true
         lblSpin.isHidden = true
-        lblInstructions.font = HRFonts.Roboto(.Bold).withSize(60)
+        lblSpin.screenInstructionify()
+    
         lblInstructions.text = ""
-
+        lblInstructions.screenInstructionify()
+    
         btnPlayPause.layer.cornerRadius = btnPlayPause.frame.width / 2
         btnPlayPause.layer.borderWidth = 4
         btnPlayPause.layer.borderColor = HRThemeColor.white.cgColor
@@ -532,5 +533,14 @@ private extension VideoRecordingVC {
         var next: Self? {
             .init(rawValue: rawValue + 1)
         }
+    }
+}
+
+fileprivate extension UILabel {
+    func screenInstructionify() {
+        textAlignment = .center
+        font = HRFonts.recordingInstruction
+        shadowColor = HRThemeColor.gray.withAlphaComponent(0.5)
+        shadowOffset = .init(width: 0, height: 1)
     }
 }

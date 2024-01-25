@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
      ]
    }
   
-  s.dependency 'DGCharts'
+  s.dependency 'DGCharts' ~> 5.0.0
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

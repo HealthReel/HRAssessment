@@ -13,9 +13,9 @@ final class ReportsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         
-        [lblTitle, lblScore, lblTrend].forEach {
-            $0?.font = HRFonts.reportText
-        }
+        lblTitle.font = HRFonts.reportText
+        lblScore.font = HRFonts.reportText
+        lblTrend.font = HRFonts.reportTrend
     }
     
     // MARK: Functions

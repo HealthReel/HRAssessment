@@ -8,7 +8,7 @@ enum HRThemeColor {
     static let blue = UIColor(hex: "007DC3")
     static let anotherBlue = UIColor(hex: "009AF9")
     static let mustard = UIColor(hex: "b0aa07")
-    static let green = UIColor(hex: "06C300")
+    static let green = UIColor(hex: "0b8b2b")
     static let red = UIColor.red
     static let white = UIColor.white
     static let black = UIColor.black

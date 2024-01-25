@@ -76,11 +76,11 @@ extension BodyWeightVC: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView.selectedRow(inComponent: component) == row {
             // If this is the selected row, use a larger font size
             label.textColor = HRThemeColor.blue
-            label.font = UIFont.systemFont(ofSize: 60)
+            label.font = .systemFont(ofSize: 60)
         } else {
             // If this is not the selected row, use a smaller font size
             label.textColor = HRThemeColor.gray
-            label.font = UIFont.systemFont(ofSize: 20)
+            label.font = .systemFont(ofSize: 20)
         }
         return label
     }

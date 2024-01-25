@@ -7,6 +7,7 @@ enum HRImageAsset: String {
     case icon_trend_up, icon_trend_down
     case icon_share
     case navigation_bar
+    case poweredByNASA
 }
 
 extension HRImageAsset {

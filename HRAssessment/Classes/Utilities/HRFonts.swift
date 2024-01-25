@@ -5,7 +5,8 @@ enum HRFonts {
     case Poppins(Style)
     case Roboto(Style)
     case NotoSans(Style)
-
+    case BebasNeue(Style)
+    
     enum Style: String, CaseIterable {
         case Regular
         case Medium
@@ -16,6 +17,8 @@ enum HRFonts {
     
     var fontname: String {
         switch self {
+        case .BebasNeue(let style):
+            return "BebasNeue-\(style.rawValue)"
         case .Poppins(let style):
             return "Poppins-\(style.rawValue)"
         case .Roboto(let style):
@@ -33,6 +36,7 @@ extension HRFonts: CaseIterable {
             fonts.append(HRFonts.Poppins(style))
             fonts.append(HRFonts.Roboto(style))
             fonts.append(HRFonts.NotoSans(style))
+            fonts.append(HRFonts.BebasNeue(style))
         }
         return fonts
     }
@@ -70,17 +74,25 @@ extension HRFonts {
     static var light16: UIFont {
         HRFonts.Poppins(.Light).withSize(16)
     }
+
+    static var medium16: UIFont {
+        HRFonts.Poppins(.Medium).withSize(16)
+    }
     
     static var reportText: UIFont {
         HRFonts.Roboto(.Regular).withSize(17)
+    }
+
+    static var reportTrend: UIFont {
+        HRFonts.Roboto(.Regular).withSize(16)
     }
     
     static var reportHeader: UIFont {
         HRFonts.NotoSans(.Bold).withSize(18)
     }
- 
-    static var medium16: UIFont {
-        HRFonts.Poppins(.Medium).withSize(16)
+
+    static var recordingInstruction: UIFont {
+        HRFonts.BebasNeue(.Regular).withSize(70)
     }
 }
 

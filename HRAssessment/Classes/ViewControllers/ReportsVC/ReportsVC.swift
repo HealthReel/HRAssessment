@@ -39,6 +39,16 @@ final class ReportVC: BaseVC {
         tableView.separatorInset = .zero
         tableView.backgroundColor = HRThemeColor.white
         
+        tableView.tableFooterView = {
+            let logo = UIImageView(image: HRImageAsset.poweredByNASA.image)
+            logo.contentMode = .center
+            logo.frame = .init(origin: .zero,
+                               size: .init(width: tableView.bounds.width,
+                                           height: 60)
+            )
+            return logo
+        }()
+        
         tableView.register(
             ReportSectionHeader.self,
             forHeaderFooterViewReuseIdentifier: "\(ReportSectionHeader.self)"
@@ -101,8 +111,13 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
         let dataPoints = controller.dataPoints(section: indexPath.section)
         cell.populate(data: dataPoints[indexPath.row],
                       reportModel: controller.currentReport)
+        
+//        cell.iconTrend.isHidden = indexPath.section > 1
+//        cell.lblTrend.isHidden = indexPath.section > 1
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 44 }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = InformationVC.instantiate(from: .HealthReel)

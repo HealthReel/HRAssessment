@@ -37,12 +37,17 @@ final class ChartsVC: BaseVC {
         // Hide horizontal grid line
         lineChartView.leftAxis.drawGridLinesEnabled = false
         lineChartView.rightAxis.drawGridLinesEnabled = false
-        
+
         // Make vertical grid lines dotted
         lineChartView.xAxis.gridLineDashLengths = [4, 4]
+        lineChartView.drawMarkers = false
+        lineChartView.pinchZoomEnabled = false
+        lineChartView.doubleTapToZoomEnabled = false
+        lineChartView.highlightPerDragEnabled = false
+        lineChartView.highlightPerTapEnabled = false
         
         lineChartView.translatesAutoresizingMaskIntoConstraints = false
-        lineChartView.isUserInteractionEnabled = false
+        lineChartView.isUserInteractionEnabled = true
         
         lineChartView.frame = CGRect(x: 0, y: 0,
                                      width: view.frame.size.width,
@@ -100,10 +105,14 @@ final class ChartsVC: BaseVC {
     
     private func lineChartDataSet(_ entries: [ChartDataEntry]) -> LineChartDataSet {
         let dataSet = LineChartDataSet(entries: entries, label: "")
+        dataSet.label = nil
+        dataSet.mode = .cubicBezier
+
+        dataSet.drawCirclesEnabled = false
+
         // Change value color
         dataSet.valueTextColor = HRThemeColor.blue
-        dataSet.valueFont = .systemFont(ofSize: 12)
-        
+        dataSet.valueFont = HRFonts.regular14
         dataSet.fillColor = HRThemeColor.blue
         dataSet.drawFilledEnabled = true
         
@@ -164,6 +173,7 @@ extension ChartsVC: UICollectionViewDataSource, UICollectionViewDelegate {
 
 final class ChartsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
