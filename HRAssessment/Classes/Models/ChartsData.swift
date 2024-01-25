@@ -6,6 +6,7 @@ public struct ChartData {
     let title: String
     let currentValue: CGFloat
     let recommendedValue: CGFloat
+    let valueSuffix: String
     let data: [Point]
 }
 
@@ -21,6 +22,7 @@ extension ChartData {
             title: "Body Fat",
             currentValue: 10.8,
             recommendedValue: 8.9,
+            valueSuffix: "%",
             data: [
                 (x: "05/08/2023", y: 15),
                 (x: "26/08/2023", y: 15),
@@ -37,6 +39,7 @@ extension ChartData {
             title: "Body Weight",
             currentValue: 107,
             recommendedValue: 80,
+            valueSuffix: "lbs",
             data: [
                 (x: "05/08/2023", y: 9),
                 (x: "26/08/2023", y: 15),
@@ -53,6 +56,7 @@ extension ChartData {
             title: "Corrected BMI",
             currentValue: 10.8,
             recommendedValue: 8.9,
+            valueSuffix: "",
             data: [
                 (x: "05/08/2023", y: 15),
                 (x: "26/08/2023", y: 15),
@@ -69,6 +73,7 @@ extension ChartData {
             title: "Lean Body Mass",
             currentValue: 10.8,
             recommendedValue: 8.9,
+            valueSuffix: "lbs",
             data: [
                 (x: "05/08/2023", y: 15),
                 (x: "26/08/2023", y: 15),
@@ -85,6 +90,7 @@ extension ChartData {
             title: "Fat Mass",
             currentValue: 10.8,
             recommendedValue: 8.9,
+            valueSuffix: "lbs",
             data: [
                 (x: "05/08/2023", y: 15),
                 (x: "26/08/2023", y: 15),

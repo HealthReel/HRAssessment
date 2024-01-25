@@ -1,20 +1,35 @@
 import Foundation
 import UIKit
 
-enum APIService { }
+
+protocol APIServiceDelegate {
+    func reportGeneratedSuccessfully()
+    func reportGenerationFailed()
+}
+
+enum APIService {
+    case shared(HRCredentials)
+}
 
 extension APIService {
-    static func generateHealthReport(fileURL: URL, requestObj: HRReportRequest) async {
-        guard let accessToken = await generateAccessToken() else { return }
+    func generateHealthReport(fileURL: URL, 
+                              requestObj: HRReportRequest,
+                              delegate: APIServiceDelegate) async {
+        guard let accessToken = await generateAccessToken() else {
+            debugPrint("Access Token could not be generated")
+            return
+        }
+        
         guard let data = try? Data(contentsOf: fileURL) else { return }
         guard let url = URL(string: "https://datav2.healthreel.com/predict/") else { return }
 
         var multipart = MultipartRequest()
         
         var parameters = [String: String]()
-        parameters["userReferenceID"] = "999"
+        parameters["userReferenceID"] = requestObj.userReferenceID
         parameters["weight"] = "\(requestObj.weight)"
         parameters["dob"] = "\(requestObj.dobTimestamp)"
+        parameters["diabetic"] = "\(requestObj.diabetic)"
         parameters["activityLevel"] = "\(requestObj.activityLevel)"
         parameters["height"] = "\(requestObj.height)"
         parameters["gender"] = "\(requestObj.gender)"
@@ -60,22 +75,29 @@ extension APIService {
             Task { await HRAPILoader.stop() }
             
             guard let data = data else {
-                print(String(describing: error))
+                debugPrint(String(describing: error))
+                delegate.reportGenerationFailed()
                 return
             }
-
-            print(String(data: data, encoding: .utf8)!)
+            
+            debugPrint(String(data: data, encoding: .utf8)!)
+            delegate.reportGeneratedSuccessfully()
         }
 
         task.resume()
     }
     
-    private static func generateAccessToken() async -> AccessToken? {
+    private func generateAccessToken() async -> AccessToken? {
         guard let url = URL(string: "https://healthreel-nodejs-36xee.ondigitalocean.app/bi/v2/access-token/generate") else {
             return nil
         }
         
-        let parameters = "apiKey=pB3EFWLbFhapWTzdPeK79hToRxzNiFSJCq7FBttU8UORLndBJkWTsMkYWcSU4xtHI%2B%2BTdh2g%2BCrebksCZkQeYvtlkaVyWBgVxE%2Bws9lNqxpqGr1eypofMoIdNumhGTpxBj7MsOouehUem%2B9P3J%2BocGxgdJxZ5u2BfhkTDKifXlQ%3D&businessUniqueId=InovCares&appUniqueId=InovCares&callbackUrl=https%3A%2F%2Finovcares.com%2Fuser%2Fpublic%2Fapi%2Fv3%2Freports"
+        guard case .shared(let hrCredentials) = self else {
+            return nil
+        }
+
+        let encodedUrl = hrCredentials.callbackUrl.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+        let parameters = "apiKey=\(hrCredentials.apiKey)&businessUniqueId=\(hrCredentials.businessUniqueId)&appUniqueId=\(hrCredentials.appUniqueId)&callbackUrl=\(encodedUrl)"
         let postData =  parameters.data(using: .utf8)
 
         var request = URLRequest(url: url, timeoutInterval: Double.infinity)
@@ -102,7 +124,7 @@ extension Collection {
             let data = try JSONSerialization.data(withJSONObject: self, options: [])
             return String(data: data, encoding: .utf8)
         } catch {
-            print(error)
+            debugPrint(error)
             return nil
         }
     }

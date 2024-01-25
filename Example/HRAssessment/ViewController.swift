@@ -19,12 +19,17 @@ class ViewController: UIViewController {
     
     var coordinator: HRCoordinator? {
         guard let navigationController else { return nil }
-        return HRCoordinator(navigationController)
+        let credentials = HRCredentials(apiKey:"",
+                                        businessUniqueId: "",
+                                        appUniqueId: "",
+                                        callbackUrl: "")
+        return HRCoordinator(navigationController, credentials: credentials)
     }
     
     // MARK: IBActions
     @IBAction func startAssessmentMaleTapped() {
-        let user = UserProfile(dob: 628385125,
+        let user = UserProfile(userReferenceID: "000",
+                               dob: 628385125,
                                gender: .male,
                                height: 169,
                                diabetic: true,
@@ -33,7 +38,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startAssessmentFemaleTapped() {
-        let user = UserProfile(dob: 628385125,
+        let user = UserProfile(userReferenceID: "000",
+                               dob: 628385125,
                                gender: .female,
                                height: 169,
                                diabetic: true,

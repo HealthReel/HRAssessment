@@ -5,7 +5,7 @@ import AVKit
 
 protocol VideoRecordingDelegate: AnyObject {
     var gender: UserProfile.Gender { get }
-    func uploadVideo(fileURL: URL)
+    func uploadVideo(fileURL: URL, delegate: APIServiceDelegate)
 }
 
 final class VideoRecordingVC: BaseVC {
@@ -206,7 +206,7 @@ final class VideoRecordingVC: BaseVC {
             audioPlayer?.prepareToPlay()
             audioPlayer?.play()
         } catch {
-            print("Error playing audio: \(error)")
+            debugPrint("Error playing audio: \(error)")
         }
     }
     
@@ -266,7 +266,7 @@ final class VideoRecordingVC: BaseVC {
                                       handler: { [weak self] _ in
             
             guard let self, let url = self.videoFileUrl else { return }
-            self.delegate?.uploadVideo(fileURL: url)
+            self.delegate?.uploadVideo(fileURL: url, delegate: self)
         }))
 
         present(alert, animated: true, completion: nil)
@@ -276,9 +276,9 @@ final class VideoRecordingVC: BaseVC {
         guard let videoFileUrl else { return }
         do {
             try FileManager.default.removeItem(at: videoFileUrl)
-            print("Successfully deleted video at \(videoFileUrl)")
+            debugPrint("Successfully deleted video at \(videoFileUrl)")
         } catch {
-            print("Error deleting video at \(videoFileUrl): \(error.localizedDescription)")
+            debugPrint("Error deleting video at \(videoFileUrl): \(error.localizedDescription)")
         }
     }
     
@@ -429,7 +429,49 @@ extension VideoRecordingVC: AVCaptureFileOutputRecordingDelegate {
         }
         
         videoFileUrl = outputFileURL
-        print("Video recorded successfully to \(outputFileURL)")
+        debugPrint("Video recorded successfully to \(outputFileURL)")
+    }
+}
+
+extension VideoRecordingVC: APIServiceDelegate {
+    func reportGeneratedSuccessfully() {
+        let alert = UIAlertController(title: "Success",
+                                      message: "Report Generated Successfully",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: String(localizedKey: "camera.alert.ok"),
+                                      style: .default,
+                                      handler: { [weak self] _ in
+            self?.deleteRecordedVideo()
+            self?.navigationController?.popToRootViewController(animated: true)
+        }))
+
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func reportGenerationFailed() {
+        let alert = UIAlertController(title: "Failure",
+                                      message: "Report Generation Failed",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Retry",
+                                      style: .default,
+                                      handler: { [weak self] _ in
+            guard let self, let url = self.videoFileUrl else { return }
+            self.delegate?.uploadVideo(fileURL: url, delegate: self)
+        }))
+        
+        alert.addAction(UIAlertAction(title: String(localizedKey: "camera.alert.ok"),
+                                      style: .default,
+                                      handler: { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }))
+
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true, completion: nil)
+        }
     }
 }
 

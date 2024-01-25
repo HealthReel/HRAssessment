@@ -1,7 +1,7 @@
 import Foundation
 
 public struct UserProfile {
-    let userReferenceID: String = "000"
+    let userReferenceID: String
     let dob: Int
     let gender: Gender
     let height: CGFloat
@@ -39,7 +39,8 @@ public struct UserProfile {
         return json
     }
     
-    public init(dob: Int, gender: Gender, height: CGFloat, diabetic: Bool, race: Race, lastHealthScore: CGFloat? = nil, lastBodyFatPercentage: CGFloat? = nil, lastBodyWeight: CGFloat? = nil, lastCBMI: CGFloat? = nil) {
+    public init(userReferenceID: String, dob: Int, gender: Gender, height: CGFloat, diabetic: Bool, race: Race, lastHealthScore: CGFloat? = nil, lastBodyFatPercentage: CGFloat? = nil, lastBodyWeight: CGFloat? = nil, lastCBMI: CGFloat? = nil) {
+        self.userReferenceID = userReferenceID
         self.dob = dob
         self.gender = gender
         self.height = height

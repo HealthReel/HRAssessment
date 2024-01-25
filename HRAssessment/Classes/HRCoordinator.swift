@@ -2,15 +2,17 @@ import Foundation
 
 public final class HRCoordinator {
     let navigationController: UINavigationController
+    let credentials: HRCredentials
     
-    public init(_ navigationController: UINavigationController!) {
+    public init(_ navigationController: UINavigationController, credentials: HRCredentials) {
         self.navigationController = navigationController
+        self.credentials = credentials
         loadFonts()
     }
 
     public func startAssessment(user: UserProfile) {
         let scene = BasePageViewController.instantiate(from: .HealthReel)
-        scene.controller = BasePageController(userProfile: user)
+        scene.controller = BasePageController(userProfile: user, credentials: credentials)
         navigationController.pushViewController(scene, animated: true)
     }
 

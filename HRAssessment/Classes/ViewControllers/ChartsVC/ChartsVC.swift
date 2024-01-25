@@ -9,6 +9,8 @@ final class ChartsVC: BaseVC {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var lblCurrentValue: UILabel!
     @IBOutlet weak var lblRecommendation: UILabel!
+    @IBOutlet weak var lblCurrentValueSuffix: UILabel!
+    @IBOutlet weak var lblRecommendationValueSuffix: UILabel!
     @IBOutlet weak var viewChart: UIView!
     
     var dataSource: [ChartData] = []
@@ -55,7 +57,8 @@ final class ChartsVC: BaseVC {
         super.viewDidLoad()
         
         setupViews()
-        collectionView(collectionView, didSelectItemAt: .init(item: 0, section: 0))
+        collectionView.selectItem(at: .zero, animated: true, scrollPosition: .top)
+        collectionView(collectionView, didSelectItemAt: .zero)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,7 +82,7 @@ final class ChartsVC: BaseVC {
         mainContainer.roundTopCorners(radius: 30)
     }
     
-    func chartEntries(_ values: [Point]) -> [ChartDataEntry] {
+    private func chartEntries(_ values: [Point]) -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
@@ -95,7 +98,7 @@ final class ChartsVC: BaseVC {
         return entries
     }
     
-    func lineChartDataSet(_ entries: [ChartDataEntry]) -> LineChartDataSet {
+    private func lineChartDataSet(_ entries: [ChartDataEntry]) -> LineChartDataSet {
         let dataSet = LineChartDataSet(entries: entries, label: "")
         // Change value color
         dataSet.valueTextColor = HRThemeColor.blue
@@ -120,7 +123,7 @@ final class ChartsVC: BaseVC {
         return dataSet
     }
     
-    func setupChart(values: [Point]) {
+    private func setupChart(values: [Point]) {
         viewChart.addSubview(lineChartView)
         mainContainer.bringSubviewToFront(lineChartView)
                                         
@@ -150,9 +153,12 @@ extension ChartsVC: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        lblRecommendation.text = dataSource[indexPath.row].recommendedValue.description
-        lblCurrentValue.text = dataSource[indexPath.row].currentValue.description
-        setupChart(values: dataSource[indexPath.row].data)
+        let chartData = dataSource[indexPath.row]
+        lblRecommendation.text = chartData.recommendedValue.description
+        lblCurrentValue.text = chartData.currentValue.description
+        lblCurrentValueSuffix.text = chartData.valueSuffix
+        lblRecommendationValueSuffix.text = chartData.valueSuffix
+        setupChart(values: chartData.data)
     }
 }
 
@@ -199,5 +205,11 @@ fileprivate class CustomValueFormatter: NSObject, ValueFormatter {
                         dataSetIndex: Int,
                         viewPortHandler: ViewPortHandler?) -> String {
         String(format: "%.1f", value)
+    }
+}
+
+fileprivate extension IndexPath {
+    static var zero: IndexPath {
+        .init(item: 0, section: 0)
     }
 }

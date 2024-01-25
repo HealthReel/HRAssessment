@@ -19,7 +19,8 @@ final class BasePageController {
     var bodyWeight: Double = 165.4
     
     let userProfile: UserProfile
-    
+    let credentials: HRCredentials
+
     var currentPageIndex: Int = 0
     var currentPageType: PageType = .socialNeeds {
         didSet {
@@ -37,8 +38,9 @@ final class BasePageController {
     }
 
     // MARK: Initializer
-    init(userProfile: UserProfile) {
+    init(userProfile: UserProfile, credentials: HRCredentials) {
         self.userProfile = userProfile
+        self.credentials = credentials
     }
     
     // MARK: Functions
@@ -201,10 +203,11 @@ extension BasePageController: VideoRecordingDelegate {
         userProfile.gender
     }
     
-    func uploadVideo(fileURL: URL) {
+    func uploadVideo(fileURL: URL, delegate: APIServiceDelegate) {
         Task {
-            await APIService.generateHealthReport(fileURL: fileURL,
-                                                  requestObj: createReportRequest())
+            await APIService.shared(credentials).generateHealthReport(fileURL: fileURL,
+                                                                      requestObj: createReportRequest(),
+                                                                      delegate: delegate)
         }
     }
 }

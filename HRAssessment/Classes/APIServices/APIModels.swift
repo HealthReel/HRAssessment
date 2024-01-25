@@ -4,12 +4,27 @@ typealias AccessToken = String
 typealias JSONDictionary = [String:Any]
 typealias JSONArray = [JSONDictionary]
 
+public struct HRCredentials {
+    let apiKey: String
+    let businessUniqueId: String
+    let appUniqueId: String
+    let callbackUrl: String
+    
+    public init(apiKey: String, businessUniqueId: String, appUniqueId: String, callbackUrl: String) {
+        self.apiKey = apiKey
+        self.businessUniqueId = businessUniqueId
+        self.appUniqueId = appUniqueId
+        self.callbackUrl = callbackUrl
+    }
+}
+
 struct AccessTokenResponse: Decodable {
     let message: String
     let data: [String: AccessToken]
 }
 
 struct HRReportRequest {
+    var userReferenceID: String
     var dobTimestamp: Int
     var height: Double
     var gender: String
@@ -36,6 +51,7 @@ struct HRReportRequest {
          selfHealthReadiness: JSONArray,
          activityLevel: Int,
          weight: Double) {
+        self.userReferenceID = user.userReferenceID
         self.dobTimestamp = user.dob
         self.height = user.height
         self.gender = user.gender.rawValue
