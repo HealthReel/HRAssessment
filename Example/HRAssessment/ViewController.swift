@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func viewChartTapped() {
-        coordinator?.showCharts()
+        coordinator?.showCharts(data: .mock)
     }
     
     @IBAction func viewReportTapped() {

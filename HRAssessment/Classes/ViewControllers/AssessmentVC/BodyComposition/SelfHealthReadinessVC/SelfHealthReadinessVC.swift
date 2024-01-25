@@ -8,7 +8,7 @@ protocol SelfHealthVCDelegate: AnyObject {
     var selfHealthQuestions: [SelfHealthReadinessQuestion] { get }
 }
 
-final class SelfHealthReadinessVC: UIViewController, UITableViewDataSource {
+final class SelfHealthReadinessVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -20,11 +20,17 @@ final class SelfHealthReadinessVC: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         titleLabel.font = HRFonts.regular16
-        tableView.rowHeight = 160
         tableView.estimatedRowHeight = 160
+        tableView.rowHeight = 160
         tableView.dataSource = self
+        tableView.delegate = self
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.flashScrollIndicators()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         delegate.selfHealthQuestions.count
     }
@@ -39,6 +45,17 @@ final class SelfHealthReadinessVC: UIViewController, UITableViewDataSource {
                       sliderValue: delegate.selfHealthResponse(for: question))
         cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return switch indexPath.row {
+        case 0: 156.0
+        case 1: 174.0
+        case 2: 192.0
+        case 3: 140.0
+        case 4: 174.0
+        default: 0
+        }
     }
 }
 

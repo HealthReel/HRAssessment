@@ -6,16 +6,13 @@ final class ChartsVC: BaseVC {
 
     // MARK: IBOutlets
     @IBOutlet weak var mainContainer: UIView!
-    @IBOutlet weak var btnBodyFat: UIButton!
-    @IBOutlet weak var btnBodyWeight: UIButton!
-    @IBOutlet weak var btnBodyBMI: UIButton!
-    
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var lblCurrentValue: UILabel!
     @IBOutlet weak var lblRecommendation: UILabel!
     @IBOutlet weak var viewChart: UIView!
     
-    var dataSource: ChartReport!
-
+    var dataSource: [ChartData] = []
+    
     // MARK: Properties
     private lazy var lineChartView: LineChartView = {
         let lineChartView = LineChartView()
@@ -58,58 +55,28 @@ final class ChartsVC: BaseVC {
         super.viewDidLoad()
         
         setupViews()
+        collectionView(collectionView, didSelectItemAt: .init(item: 0, section: 0))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
     }
     
     override func onTapNavBarLeftButton() {
         navigationController?.popViewController(animated: true)
     }
     
-    // MARK: Actions
-    @objc func onTapBtn(_ sender: UIButton) {
-        [btnBodyFat, btnBodyWeight, btnBodyBMI].forEach {
-            $0?.backgroundColor = HRThemeColor.white
-            $0?.setTitleColor(.black, for: .normal)
-            $0?.isSelected = false
-        }
-
-        sender.backgroundColor = HRThemeColor.anotherBlue
-        sender.setTitleColor(.white, for: .normal)
-        sender.isSelected = true
-
-        if sender === btnBodyFat {
-            lblRecommendation.text = dataSource.bodyFat.recommendedValue.description
-            lblCurrentValue.text = dataSource.bodyFat.currentValue.description
-            setupChart(values: dataSource.bodyFat.data)
-        } else if sender === btnBodyWeight {
-            lblRecommendation.text = dataSource.bodyWeight.recommendedValue.description
-            lblCurrentValue.text = dataSource.bodyWeight.currentValue.description
-            setupChart(values: dataSource.bodyWeight.data)
-        } else if sender === btnBodyBMI {
-            lblRecommendation.text = dataSource.correctedBMI.recommendedValue.description
-            lblCurrentValue.text = dataSource.correctedBMI.currentValue.description
-            setupChart(values: dataSource.correctedBMI.data)
-        }
-    }
-}
-
-// MARK: Functions
-extension ChartsVC {
-    func setupViews() {
+    private func setupViews() {
         navBarTitleLabel.text = "Charts"
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.allowsSelection = true
+        collectionView.allowsMultipleSelection = false
         
         view.backgroundColor = HRThemeColor.white
         view.bringSubviewToFront(mainContainer)
         mainContainer.roundTopCorners(radius: 30)
-
-        [btnBodyFat, btnBodyWeight, btnBodyBMI].forEach {
-            $0?.addTarget(self, action: #selector(onTapBtn), for: .touchUpInside)
-            $0?.addRounderBorder(radius: 4)
-            $0?.dropShadow()
-        }
-
-        lblRecommendation.text = dataSource.bodyFat.recommendedValue.description
-        lblCurrentValue.text = dataSource.bodyFat.currentValue.description
-        setupChart(values: dataSource.bodyFat.data)
     }
     
     func chartEntries(_ values: [Point]) -> [ChartDataEntry] {
@@ -167,6 +134,49 @@ extension ChartsVC {
         let entries = chartEntries(values)
         let data = LineChartData(dataSet: lineChartDataSet(entries))
         lineChartView.data = data
+    }
+}
+
+// MARK: Functions
+extension ChartsVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        dataSource.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(type: ChartsCollectionViewCell.self, for: indexPath)
+        cell.titleLabel.text = dataSource[indexPath.row].title
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        lblRecommendation.text = dataSource[indexPath.row].recommendedValue.description
+        lblCurrentValue.text = dataSource[indexPath.row].currentValue.description
+        setupChart(values: dataSource[indexPath.row].data)
+    }
+}
+
+final class ChartsCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        titleLabel.font = HRFonts.date
+        contentView.addRounderBorder(borderColor: HRThemeColor.gray)
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                backgroundColor = HRThemeColor.blue
+                titleLabel.textColor = HRThemeColor.white
+                contentView.addRounderBorder(borderColor: HRThemeColor.blue)
+            } else {
+                backgroundColor = HRThemeColor.white
+                titleLabel.textColor = HRThemeColor.black
+                contentView.addRounderBorder(borderColor: HRThemeColor.gray)
+            }
+        }
     }
 }
 

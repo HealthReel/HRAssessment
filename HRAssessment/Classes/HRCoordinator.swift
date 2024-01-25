@@ -14,7 +14,7 @@ public final class HRCoordinator {
         navigationController.pushViewController(scene, animated: true)
     }
 
-    public func showCharts(data: ChartReport = ChartReport.mockData) {
+    public func showCharts(data: [ChartData]) {
         let chartsScene = ChartsVC.instantiate(from: .HealthReel)
         chartsScene.dataSource = data
         navigationController.pushViewController(chartsScene, animated: true)

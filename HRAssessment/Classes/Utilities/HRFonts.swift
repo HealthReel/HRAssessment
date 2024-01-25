@@ -63,6 +63,10 @@ extension HRFonts {
         HRFonts.Poppins(.Regular).withSize(16)
     }
 
+    static var regular14: UIFont {
+        HRFonts.Poppins(.Regular).withSize(14)
+    }
+    
     static var light16: UIFont {
         HRFonts.Poppins(.Light).withSize(16)
     }

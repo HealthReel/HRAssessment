@@ -74,6 +74,7 @@ extension BasePageViewController: BasePageControllerDelegate {
             let dassDescScene = SceneFactory.dassDescScene(delegate: controller)
             configurePageVC(viewController: dassDescScene)
             stickPageContainerToBottom()
+            pageViewController.isScrollEnabled = false
 
         case .dass:
             let dassAssessmentScene = SceneFactory.dassAssessmentScene(

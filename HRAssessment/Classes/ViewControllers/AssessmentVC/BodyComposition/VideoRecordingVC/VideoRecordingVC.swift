@@ -3,7 +3,7 @@ import UIKit
 import AVFoundation
 import AVKit
 
-protocol VideoRecordingDelegate {
+protocol VideoRecordingDelegate: AnyObject {
     var gender: UserProfile.Gender { get }
     func uploadVideo(fileURL: URL)
 }
@@ -27,8 +27,8 @@ final class VideoRecordingVC: BaseVC {
     @IBOutlet weak var lblRecording: UILabel!
 
     // MARK: Properties
+    weak var delegate: VideoRecordingDelegate?
     var isRecordingDone: Bool = false
-    var delegate: VideoRecordingDelegate?
     
     private var gender: UserProfile.Gender { delegate?.gender ?? .female }
     private let movieOutput = AVCaptureMovieFileOutput()
@@ -37,13 +37,12 @@ final class VideoRecordingVC: BaseVC {
         session.sessionPreset = .high
         return session
     }()
-    
     private lazy var videoPreviewLayer: AVCaptureVideoPreviewLayer = {
         let layer = AVCaptureVideoPreviewLayer(session: captureSession)
         layer.videoGravity = .resizeAspectFill
         return layer
     }()
-
+    
     private lazy var circularLoader: CAShapeLayer = {
         let loader = CAShapeLayer()
         loader.strokeColor = UIColor.green.cgColor
@@ -60,10 +59,8 @@ final class VideoRecordingVC: BaseVC {
         loader.path = circularPath.cgPath
         return loader
     }()
-    
     private lazy var counterLabel: UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 0, y: 0, 
-                                        width: 100, height: 100))
+        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         lbl.center = view.center
         lbl.textAlignment = .center
         lbl.font = UIFont.systemFont(ofSize: 40)
@@ -71,43 +68,29 @@ final class VideoRecordingVC: BaseVC {
         lbl.isHidden = true
         return lbl
     }()
-            
-    private var audioPlayer: AVAudioPlayer?
-    private let screenInstructions: [String] = [
-        String(localizedKey: "camera.instructions.1"), //"Phone is under the window or a well lit room",
-        String(localizedKey: "camera.instructions.2"), //"Take 2 steps away from your phone",
-        String(localizedKey: "camera.instructions.3"), //"Position Yourself",
-        String(localizedKey: "camera.instructions.4"), //"No windows or lights in the background",
-        String(localizedKey: "camera.instructions.5")  //"Bellybutton is visible"
-    ]
-    private let audiosFileName: [String] = [
-        "assessment_1",
-        "assessment_2",
-        "assessment_3",
-        "assessment_4",
-        "assessment_5_female",
-        "a6_recording_time_info",
-        "a7_after_countdown_info",
-        "a8_raise_hands_as_PIP",
-        "a9_pose_time_info",
-        "a10_pose_timer",
-        "a11_start_beep",
-        "a12_recording_time"
-    ]
     
-    private var currentAudio: Int = 0
-    private var videoFileUrl: URL?
+    private var instructions = Instructions.allCases
+    private var audioPlayer: AVAudioPlayer?
 
+    private var currentInstruction = Instructions.assessment_1 {
+        didSet {
+            DispatchQueue.main.async { self.updateUI() }
+            playAudio(fileName: currentInstruction.filename(for: gender))
+        }
+    }
+    
+    private var videoFileUrl: URL?
+    private var paused: Bool = false
     private var isCapturing = false {
         didSet {
             if isCapturing {
                 btnPlayPause.isSelected = true
-                let title = screenInstructions[currentAudio]
-                let fileName = audiosFileName[currentAudio]
-                playAudioFromLocalFile(title: title, audioFileName: fileName)
+                if paused { paused = audioPlayer?.play() ?? false }
+                else { currentInstruction = Instructions.assessment_1 }
             } else {
                 btnPlayPause.isSelected = false
                 audioPlayer?.pause()
+                paused = true
             }
         }
     }
@@ -121,20 +104,23 @@ final class VideoRecordingVC: BaseVC {
         view.bringSubviewToFront(viewContainer)
         viewContainer.roundTopCorners(radius: 30)
         
+        viewFrame.isHidden = true
+        viewFrame.backgroundColor = .clear
+        viewFrame.layer.borderWidth = 5
+        viewFrame.layer.borderColor = HRThemeColor.green.cgColor
+
         imgRecording.isHidden = true
         lblRecording.isHidden = true
         lblSpin.isHidden = true
+        lblInstructions.font = HRFonts.Roboto(.Bold).withSize(60)
         lblInstructions.text = ""
 
         btnPlayPause.layer.cornerRadius = btnPlayPause.frame.width / 2
         btnPlayPause.layer.borderWidth = 4
         btnPlayPause.layer.borderColor = HRThemeColor.white.cgColor
         
-        let image = HRImageAsset.icon_filled_circle.image
-        btnPlayPause.setImage(image, for: .normal)
-
-        let imageSelected = HRImageAsset.icon_filled_square.image
-        btnPlayPause.setImage(imageSelected, for: .selected)
+        btnPlayPause.setImage(HRImageAsset.icon_filled_circle.image, for: .normal)
+        btnPlayPause.setImage(HRImageAsset.icon_filled_square.image, for: .selected)
         btnPlayPause.tintColor = .clear
 
         setupVideoRecorder()
@@ -150,7 +136,9 @@ final class VideoRecordingVC: BaseVC {
     }
     
     private func hackAVAudioPlayerToCircumventDelay() {
-        guard let path = Bundle.HRAssessment.path(forResource: "a11_start_beep", ofType: "mp3") else {
+        guard let path = Bundle.HRAssessment.path(
+            forResource: "a11_start_beep", ofType: "mp3"
+        ) else {
             return
         }
         
@@ -203,14 +191,7 @@ final class VideoRecordingVC: BaseVC {
         }
     }
 
-    func playAudioFromLocalFile(title: String?, audioFileName: String) {
-        lblInstructions.text = title ?? ""
-        
-        var fileName = audioFileName
-        if audioFileName == "assessment_5_female", gender == .male {
-            fileName = "assessment_5_Male"
-        }
-
+    func playAudio(fileName: String) {
         guard let path = Bundle.HRAssessment.path(forResource: fileName, ofType: "mp3") else {
             return
         }
@@ -269,16 +250,11 @@ final class VideoRecordingVC: BaseVC {
                                       handler: { [weak self] _ in
             
             guard let self else { return }
-            self.currentAudio = 0
+            self.currentInstruction = .assessment_1
             
             self.btnPlayPause.isHidden = false
             self.lblInstructions.isHidden = false
             self.btnPlayPause.isSelected = false
-
-            let title = self.screenInstructions[self.currentAudio]
-            let fileName = self.audiosFileName[self.currentAudio]
-            
-            self.playAudioFromLocalFile(title: title, audioFileName: fileName)
             
             DispatchQueue.global().async {
                 self.deleteRecordedVideo()
@@ -321,7 +297,6 @@ final class VideoRecordingVC: BaseVC {
     }
     
     private func startLoader(title: String, duration: Int, color: UIColor) {
-        
         lblSpin.text = title
         lblSpin.textColor = color
         counterLabel.textColor = color
@@ -391,7 +366,7 @@ final class VideoRecordingVC: BaseVC {
         })
     }
     
-    private func animateGifView() {
+    private func animateGifViewToBottom() {
         UIView.animate(withDuration: 0.5) {
             self.constraintGifViewWidth.constant = 122
             self.constraintGifViewHeight.constant = 275
@@ -400,54 +375,40 @@ final class VideoRecordingVC: BaseVC {
 }
 
 extension VideoRecordingVC: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        currentAudio += 1
-        if currentAudio < 5 {
-//            let instructions = screenInstructions[currentAudio]
-            let fileName = audiosFileName[currentAudio]
-            playAudioFromLocalFile(title: title, audioFileName: fileName)
-        } else if currentAudio == 5 || currentAudio == 6 {
-            lblInstructions.isHidden = true
+    private func updateUI() {
+        lblInstructions.text = currentInstruction.screenPrompt
+
+        switch currentInstruction {
+        case .assessment_1, .assessment_2, .assessment_3, .assessment_4, .assessment_5, .a11_start_beep:
+            break
+            
+        case .a6_recording_time_info, .a7_after_countdown_info:
             btnPlayPause.isHidden = true
-            
             viewFrame.isHidden = false
-            viewFrame.backgroundColor = .clear
-            viewFrame.layer.borderWidth = 5
-            viewFrame.layer.borderColor = HRThemeColor.green.cgColor
             
-            let fileName = audiosFileName[currentAudio]
-            playAudioFromLocalFile(title: nil, audioFileName: fileName)
-        } else if currentAudio == 7 {
+        case .a8_raise_hands_as_PIP:
             gifImageView.isHidden = false
             showGif()
-            let fileName = audiosFileName[currentAudio]
-            playAudioFromLocalFile(title: nil, audioFileName: fileName)
-        } else if currentAudio == 8 {
-            // Animate GIF to bottom
-            animateGifView()
-            let fileName = audiosFileName[currentAudio]
-            playAudioFromLocalFile(title: nil, audioFileName: fileName)
-        } else if currentAudio == 9 {
-            // Start the spin
+            
+        case .a9_pose_time_info:
+            animateGifViewToBottom()
+        case .a10_pose_timer:
             startLoader(title: String(localizedKey: "camera.loader.pose"),
                         duration: 5,
                         color: HRThemeColor.mustard)
-            let fileName = audiosFileName[currentAudio]
-            playAudioFromLocalFile(title: nil, audioFileName: fileName)
-        } else if currentAudio == 10 {
-            let fileName = audiosFileName[currentAudio]
-            playAudioFromLocalFile(title: nil, audioFileName: fileName)
-        } else if currentAudio == 11 {
+        case .a12_recording_time:
             startRecording()
-            
-            startLoader(title: String(localizedKey: "camera.loader.spin"), 
+            startLoader(title: String(localizedKey: "camera.loader.spin"),
                         duration: 10,
                         color: HRThemeColor.green)
-            let fileName = audiosFileName[currentAudio]
-            playAudioFromLocalFile(title: nil, audioFileName: fileName)
+        }
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if let next = currentInstruction.next {
+            currentInstruction = next
         } else {
             stopRecording()
-            
             gifImageView.isHidden = true
             viewSpinner.isHidden = true
             viewFrame.isHidden = true
@@ -469,5 +430,65 @@ extension VideoRecordingVC: AVCaptureFileOutputRecordingDelegate {
         
         videoFileUrl = outputFileURL
         print("Video recorded successfully to \(outputFileURL)")
+    }
+}
+
+private extension VideoRecordingVC {
+    enum Instructions: Int, CaseIterable {
+        case assessment_1
+        case assessment_2
+        case assessment_3
+        case assessment_4
+        case assessment_5
+        case a6_recording_time_info
+        case a7_after_countdown_info
+        case a8_raise_hands_as_PIP
+        case a9_pose_time_info
+        case a10_pose_timer
+        case a11_start_beep
+        case a12_recording_time
+        
+        func filename(for gender: UserProfile.Gender) -> String {
+            return switch self {
+            case .assessment_1: "assessment_1"
+            case .assessment_2: "assessment_2"
+            case .assessment_3: "assessment_3"
+            case .assessment_4: "assessment_4"
+            case .assessment_5:
+                gender == .male ? "assessment_5_Male" : "assessment_5_female"
+            case .a6_recording_time_info: "a6_recording_time_info"
+            case .a7_after_countdown_info: "a7_after_countdown_info"
+            case .a8_raise_hands_as_PIP: "a8_raise_hands_as_PIP"
+            case .a9_pose_time_info: "a9_pose_time_info"
+            case .a10_pose_timer: "a10_pose_timer"
+            case .a11_start_beep: "a11_start_beep"
+            case .a12_recording_time: "a12_recording_time"
+            }
+        }
+        
+        var screenPrompt: String {
+            return switch self {
+            case .assessment_1: 
+                String(localizedKey: "camera.instructions.1") 
+                //"Phone is under the window or a well lit room",
+            case .assessment_2:
+                String(localizedKey: "camera.instructions.2") 
+                //"Take 2 steps away from your phone",
+            case .assessment_3:
+                String(localizedKey: "camera.instructions.3") 
+                //"Position Yourself",
+            case .assessment_4:
+                String(localizedKey: "camera.instructions.4") 
+                //"No windows or lights in the background",
+            case .assessment_5:
+                String(localizedKey: "camera.instructions.5")  
+                //"Bellybutton is visible"
+            default: ""
+            }
+        }
+        
+        var next: Self? {
+            .init(rawValue: rawValue + 1)
+        }
     }
 }

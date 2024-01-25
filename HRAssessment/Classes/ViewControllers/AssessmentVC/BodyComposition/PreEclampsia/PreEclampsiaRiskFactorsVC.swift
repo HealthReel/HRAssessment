@@ -13,7 +13,6 @@ final class PreEclampsiaRiskFactorsVC: BaseVC, HRPageViewIndexed {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var constraintsTableViewHeight: NSLayoutConstraint!
        
     // MARK: Properties
     weak var delegate: RiskFactorVCDelegate!
@@ -44,13 +43,16 @@ final class PreEclampsiaRiskFactorsVC: BaseVC, HRPageViewIndexed {
         tableView.allowsSelection = true
         tableView.allowsMultipleSelection = true
         tableView.separatorColor = .clear
-        tableView.delegate = self
         tableView.dataSource = self
+        tableView.delegate = self
 
         lblTitle.text = preEclampsiaQuestion.title
         lblTitle.font = HRFonts.regular16
-        
-        constraintsTableViewHeight.constant = CGFloat(riskFactors.count * 30)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.flashScrollIndicators()
     }
 }
 

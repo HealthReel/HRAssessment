@@ -33,13 +33,24 @@ final class PregnantVC: UIViewController {
         titleLabel.font = HRFonts.heading
         questionLabel.font = HRFonts.regular20
 
-        let attr: [NSAttributedString.Key:Any] = [
+        let normalAttr: [NSAttributedString.Key:Any] = [
             .font: HRFonts.medium16, .foregroundColor: HRThemeColor.blue
         ]
-        btnYes.setAttributedTitle(.init(string: "Yes", attributes: attr),
+
+        let selectedAttr: [NSAttributedString.Key:Any] = [
+            .font: HRFonts.medium16, .foregroundColor: HRThemeColor.white
+        ]
+        
+        btnYes.setAttributedTitle(.init(string: "Yes", attributes: normalAttr),
                                   for: .normal)
-        btnNo.setAttributedTitle(.init(string: "No", attributes: attr),
+        btnNo.setAttributedTitle(.init(string: "No", attributes: normalAttr),
                                  for: .normal)
+        
+        btnYes.setAttributedTitle(.init(string: "Yes", attributes: selectedAttr),
+                                  for: .selected)
+        btnNo.setAttributedTitle(.init(string: "No", attributes: selectedAttr),
+                                 for: .selected)
+        
         [btnYes, btnNo].forEach {
             $0?.makeCircular()
             $0?.dropShadow()
@@ -70,12 +81,12 @@ final class PregnantVC: UIViewController {
     }
 
     private func selectButton(_ button: UIButton) {
+        button.isSelected = true
         button.backgroundColor = HRThemeColor.blue
-        button.setTitleColor(HRThemeColor.white, for: .normal)
     }
 
     private func deselectButton(_ button: UIButton) {
+        button.isSelected = false
         button.backgroundColor = HRThemeColor.white
-        button.setTitleColor(HRThemeColor.blue, for: .normal)
     }
 }

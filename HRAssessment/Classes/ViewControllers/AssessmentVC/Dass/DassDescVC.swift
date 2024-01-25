@@ -8,6 +8,7 @@ protocol DassDescVCProtocol: AnyObject {
 final class DassDescVC: UIViewController {
 
     // MARK: IBOutlets
+    @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var viewRatingHint: UIView!
     @IBOutlet weak var btnStart: UIButton!
 
@@ -21,8 +22,8 @@ final class DassDescVC: UIViewController {
     }
     
     private func configure() {
-        viewRatingHint.addRounderBorder(borderWidth: 1,
-                                        borderColor: HRThemeColor.blue,
+        contentScrollView.isScrollEnabled = true
+        viewRatingHint.addRounderBorder(borderColor: HRThemeColor.blue,
                                         radius: 15)
         btnStart.makeCircular()
         btnStart.backgroundColor = HRThemeColor.blue

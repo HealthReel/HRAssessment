@@ -2,7 +2,7 @@
 import AVFoundation
 import UIKit
 
-protocol SocialNeedsVCDelegate {
+protocol SocialNeedsVCDelegate: AnyObject {
     var socialNeedQuestionnaire: [SocialNeedsQuestion] { get }
     func response(for socialNeed: SocialNeedsQuestion) -> SocialNeedsResponse?
     func selectSocialNeeds(socialNeed: SocialNeedsQuestion, option: SocialNeedsResponse)
@@ -12,8 +12,7 @@ final class SocialNeedsVC: UIViewController, HRPageViewIndexed {
 
     // MARK: Properties
     var index = 0
-    var delegate: SocialNeedsVCDelegate!
-
+    weak var delegate: SocialNeedsVCDelegate!
     var socialNeed: SocialNeedsQuestion {
         delegate.socialNeedQuestionnaire[index]
     }
@@ -35,7 +34,7 @@ final class SocialNeedsVC: UIViewController, HRPageViewIndexed {
         lblHeading.font = HRFonts.heading
         lblQuestion.font = HRFonts.regular20
         lblSubtext.font = HRFonts.regular16
-
+        
         tableView.backgroundColor = HRThemeColor.white
         tableView.dataSource = self
         tableView.rowHeight = 60

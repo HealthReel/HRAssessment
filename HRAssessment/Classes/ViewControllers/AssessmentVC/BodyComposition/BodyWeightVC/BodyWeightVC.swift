@@ -1,7 +1,7 @@
 
 import UIKit
 
-protocol BodyWeightVCDelegate {
+protocol BodyWeightVCDelegate: AnyObject {
     func bodyWeightUpdated(weight: Double)
     var bodyWeightResponse: Double { get }
 }
@@ -9,16 +9,18 @@ protocol BodyWeightVCDelegate {
 final class BodyWeightVC: UIViewController {
 
     // MARK: IBOutlets
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var numberPicker: UIPickerView!
     @IBOutlet weak var decimalPicker: UIPickerView!
 
     // MARK: Properties
-    var delegate: BodyWeightVCDelegate!
+    weak var delegate: BodyWeightVCDelegate!
 
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        titleLabel.font = HRFonts.regular16
         numberPicker.delegate = self
         numberPicker.dataSource = self
 

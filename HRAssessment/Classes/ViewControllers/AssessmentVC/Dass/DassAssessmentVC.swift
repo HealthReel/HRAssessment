@@ -1,7 +1,7 @@
 
 import UIKit
 
-protocol DassAssessmentVCDelegate {
+protocol DassAssessmentVCDelegate: AnyObject {
     var dassAssessmentQuestions: [DASSQuestion] { get }
     func dassResponseRecieved(for question: DASSQuestion, response: DASSResponse)
     func response(for question: DASSQuestion) -> DASSResponse?
@@ -18,7 +18,7 @@ final class DassAssessmentVC: UIViewController, HRPageViewIndexed {
     @IBOutlet weak var btn3: UIButton!
 
     // MARK: Properties
-    var delegate: DassAssessmentVCDelegate!
+    weak var delegate: DassAssessmentVCDelegate!
     var index: Int = 0
 
     var dassQuestion: DASSQuestion {

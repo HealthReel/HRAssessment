@@ -8,19 +8,26 @@ protocol ActivityLevelVCDelegate: AnyObject {
 
 final class ActivityLevelVC: UIViewController {
 
-    weak var delegate: ActivityLevelVCDelegate!
-    
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
+    weak var delegate: ActivityLevelVCDelegate!
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleLabel.font = HRFonts.regular16
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.flashScrollIndicators()
     }
 }
 
@@ -56,9 +63,7 @@ final class ActivityLevelCell: UITableViewCell {
     @IBOutlet weak var cardView: UIView!
 
     override var isSelected: Bool {
-        didSet {
-            setup()
-        }
+        didSet { setup() }
     }
 
     override func awakeFromNib() {
@@ -69,13 +74,14 @@ final class ActivityLevelCell: UITableViewCell {
     }
 
     func setup() {
-        cardView.addRounderBorder(borderWidth: 1, borderColor: HRThemeColor.lightgray, radius: 4)
+        cardView.addRounderBorder(borderColor: HRThemeColor.lightgray)
         cardView.backgroundColor = isSelected ? HRThemeColor.blue : HRThemeColor.white
+        checkImageview.isHidden = isSelected
+        titleLabel.font = HRFonts.regular20
         titleLabel.textColor = isSelected ? HRThemeColor.white : HRThemeColor.black
         subtitleLabel.textColor = isSelected ? HRThemeColor.white : HRThemeColor.gray
-        subtitleLabel.font = isSelected ? .systemFont(ofSize: 14) : .systemFont(ofSize: 10)
+        subtitleLabel.font = isSelected ? HRFonts.regular16 : HRFonts.regular14
         subtitleLabel.numberOfLines = 0
-        checkImageview.isHidden = isSelected
     }
 
     func populate(activityLevel: ActivityLevel, selected: Bool) {
