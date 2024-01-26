@@ -41,36 +41,15 @@ public class BaseVC: UIViewController {
         return label
     }()
     
-    lazy var navSkipButton: UIButton = {
+    lazy var navRightButton: UIButton = {
         // Navigation bar Skip button
         let navSkipButton = UIButton(frame: CGRect(x: Int(UIApplication.shared.screenWidth - 100),
                                                    y: Int(offsetY),
                                                    width: 100, height: 30))
-        navSkipButton.setAttributedTitle(NSAttributedString(string: "Skip",
-                                                            attributes: [.font: HRFonts.navigationTitle]),
-                                         for: .normal)
         navSkipButton.setTitleColor(HRThemeColor.white, for: .normal)
         navSkipButton.isHidden = true
-        navSkipButton.addTarget(self, action: #selector(onTapNavBarSkipButton), for: .touchUpInside)
+        navSkipButton.addTarget(self, action: #selector(onTapNavBarRightButton), for: .touchUpInside)
         return navSkipButton
-    }()
-    
-    lazy var navShareButton: UIButton = {
-        // Navigation bar Share button
-        var config = UIButton.Configuration.borderless()
-        config.image = HRImageAsset.icon_share.image
-        config.imagePadding = 5
-        config.imagePlacement = .leading
-        config.baseForegroundColor = .white
-
-        let navShareButton = UIButton(configuration: config)
-        navShareButton.frame = CGRect(x: Int(UIApplication.shared.screenWidth - 50),
-                                      y: Int(offsetY),
-                                      width: 30, height: 30)
-        navShareButton.isHidden = true
-        navShareButton.addTarget(self, action: #selector(onTapNavBarShareButton),
-                                 for: .touchUpInside)
-        return navShareButton
     }()
     
     // MARK: Life Cycle
@@ -88,12 +67,8 @@ public class BaseVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 
-    @objc func onTapNavBarSkipButton() {
+    @objc func onTapNavBarRightButton() {
         
-    }
-
-    @objc func onTapNavBarShareButton() {
-
     }
 
     // MARK: Functions
@@ -103,7 +78,6 @@ public class BaseVC: UIViewController {
         view.addSubview(navigationView)
         navigationView.addSubview(backButton)
         navigationView.addSubview(navBarTitleLabel)
-        navigationView.addSubview(navShareButton)
-        navigationView.addSubview(navSkipButton)
+        navigationView.addSubview(navRightButton)
     }
 }

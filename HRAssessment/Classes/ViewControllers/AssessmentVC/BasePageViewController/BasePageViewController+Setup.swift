@@ -34,8 +34,8 @@ extension BasePageViewController {
 
 // MARK: Functions
 extension BasePageViewController {
-    private func configureNavigationViews() {
-        navSkipButton.isHidden = true
+    func configureNavigationViews() {
+        navRightButton.isHidden = true
     }
 
     private func configureViews() {

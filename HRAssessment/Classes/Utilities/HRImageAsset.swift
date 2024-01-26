@@ -6,6 +6,7 @@ enum HRImageAsset: String {
     case icon_filled_circle, icon_filled_square
     case icon_trend_up, icon_trend_down
     case icon_share
+    case info_icon
     case navigation_bar
     case poweredByNASA
 }

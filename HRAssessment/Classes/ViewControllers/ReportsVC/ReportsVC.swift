@@ -23,7 +23,17 @@ final class ReportVC: BaseVC {
 
         navBarTitleLabel.text = "Reports"
         titleHeader.font = HRFonts.regular16
-        navShareButton.isHidden = false
+
+        navRightButton.isHidden = false
+        navRightButton.configuration = {
+            var config = UIButton.Configuration.borderless()
+            config.image = HRImageAsset.icon_share.image
+            config.imagePadding = 5
+            config.imagePlacement = .leading
+            config.baseForegroundColor = .white
+            return config
+        }()
+        
         viewContainer.roundTopCorners(radius: 30)
         
         collectionView.delegate = self
@@ -56,19 +66,26 @@ final class ReportVC: BaseVC {
     }
     
     // MARK: Actions
-    override func onTapNavBarShareButton() {
-        if let screenshot = tableView.screenshot {
-            // Convert the image to PDF data
-            if let pdfData = screenshot.convertToPDF() {
-                // Save the PDF data to a file
-                let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                let pdfURL = documentsDirectory.appendingPathComponent("InovCare Health Report.pdf")
-                try? pdfData.write(to: pdfURL)
-                
-                // Share the PDF file
-                sharePDF(pdfURL: pdfURL)
-            }
+    override func onTapNavBarRightButton() {
+        HRAPILoader.start()
+        guard let screenshot = tableView.screenshot else {
+            HRAPILoader.stop()
+            return
         }
+
+        guard let pdfData = screenshot.convertToPDF() else {
+            HRAPILoader.stop()
+            return
+        }
+        
+        // Save the PDF data to a file
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let pdfURL = documentsDirectory.appendingPathComponent("InovCare Health Report.pdf")
+        try? pdfData.write(to: pdfURL)
+        
+        HRAPILoader.stop()
+        // Share the PDF file
+        sharePDF(pdfURL: pdfURL)
     }
     
     override func onTapNavBarLeftButton() {

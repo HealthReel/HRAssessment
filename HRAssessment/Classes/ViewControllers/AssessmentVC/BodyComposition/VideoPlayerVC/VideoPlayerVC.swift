@@ -41,7 +41,11 @@ final class VideoPlayerVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navSkipButton.isHidden = false
+        navRightButton.isHidden = false
+        navRightButton.setAttributedTitle(NSAttributedString(string: "Skip",
+                                                            attributes: [.font: HRFonts.navigationTitle]),
+                                         for: .normal)
+        
         navBarTitleLabel.text = String(localizedKey: "nav.title.how_to_record")
         view.bringSubviewToFront(viewContainer)
         viewContainer.backgroundColor = HRThemeColor.black
@@ -85,11 +89,11 @@ final class VideoPlayerVC: BaseVC {
                                                   object: playerItem)
     }
 
-    override func onTapNavBarSkipButton() {
+    override func onTapNavBarRightButton() {
         player.pause()
         showOptionPopup()
     }
-    
+
     override func onTapNavBarLeftButton() {
         delegate.backButtonTapped()
         navigationController?.popViewController(animated: true)
