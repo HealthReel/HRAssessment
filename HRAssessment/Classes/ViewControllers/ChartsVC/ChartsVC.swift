@@ -16,16 +16,17 @@ final class ChartsVC: BaseVC {
     var dataSource: [ChartData] = []
     
     // MARK: Properties
-    private lazy var lineChartView: LineChartView = {
+    private var lineChartView: LineChartView = {
         let lineChartView = LineChartView()
         
         // Enable horizontal scrolling
         lineChartView.dragXEnabled = true
         lineChartView.xAxis.drawLabelsEnabled = true
-        
+
         // Hide labels on the Y-axis (left and right)
         lineChartView.leftAxis.drawLabelsEnabled = false
         lineChartView.rightAxis.drawLabelsEnabled = false
+        lineChartView.rightAxis.enabled = false
         
         // Set the date value formatter for the X-axis
         lineChartView.xAxis.valueFormatter = DateValueFormatter()
@@ -45,15 +46,14 @@ final class ChartsVC: BaseVC {
         lineChartView.doubleTapToZoomEnabled = false
         lineChartView.highlightPerDragEnabled = false
         lineChartView.highlightPerTapEnabled = false
+        lineChartView.setExtraOffsets(left: 15, top: 0, right: 0, bottom: 15)
         
+        lineChartView.clipDataToContentEnabled = false
+        lineChartView.clipValuesToContentEnabled = false
+    
+        lineChartView.clipsToBounds = false
         lineChartView.translatesAutoresizingMaskIntoConstraints = false
         lineChartView.isUserInteractionEnabled = true
-        
-        lineChartView.frame = CGRect(x: 0, y: 0,
-                                     width: view.frame.size.width,
-                                     height: 300)
-        lineChartView.center = view.center
-
         return lineChartView
     }()
     
@@ -64,11 +64,6 @@ final class ChartsVC: BaseVC {
         setupViews()
         collectionView.selectItem(at: .zero, animated: true, scrollPosition: .top)
         collectionView(collectionView, didSelectItemAt: .zero)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
     }
     
     override func onTapNavBarLeftButton() {
@@ -85,6 +80,8 @@ final class ChartsVC: BaseVC {
         view.backgroundColor = HRThemeColor.white
         view.bringSubviewToFront(mainContainer)
         mainContainer.roundTopCorners(radius: 30)
+        
+        viewChart.clipsToBounds = false
     }
     
     private func chartEntries(_ values: [Point]) -> [ChartDataEntry] {
@@ -99,7 +96,7 @@ final class ChartsVC: BaseVC {
             entries.append(ChartDataEntry(x: date.timeIntervalSince1970,
                                           y: value.y))
         }
-
+        
         return entries
     }
     
@@ -108,29 +105,67 @@ final class ChartsVC: BaseVC {
         dataSet.label = nil
         dataSet.mode = .cubicBezier
 
-        dataSet.drawCirclesEnabled = false
+        dataSet.lineWidth = 3
+        dataSet.isDrawLineWithGradientEnabled = false
+        dataSet.setColor(HRThemeColor.blue)
 
+        dataSet.drawCirclesEnabled = false
+        
         // Change value color
         dataSet.valueTextColor = HRThemeColor.blue
-        dataSet.valueFont = HRFonts.regular14
+        dataSet.valueFont = HRFonts.medium16
         dataSet.fillColor = HRThemeColor.blue
+        dataSet.fillAlpha = 1
         dataSet.drawFilledEnabled = true
         
         // Set value formatter for showing values up to 1 decimal place
         dataSet.valueFormatter = CustomValueFormatter()
-
-        // Create the gradient
-        let gradientColors = [HRThemeColor.blue.cgColor, HRThemeColor.white.cgColor] as CFArray
-        let colorLocations: [CGFloat] = [1.0, 0.0]
-        guard let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(),
-                                        colors: gradientColors,
-                                        locations: colorLocations) else {
+        
+        guard let gradient = CGGradient(
+            colorsSpace: CGColorSpaceCreateDeviceRGB(),
+            colors: [HRThemeColor.blue.cgColor, HRThemeColor.white.cgColor] as CFArray,
+            locations: [1.0, 0.0]
+        ) else {
             return dataSet
         }
         
         dataSet.fill = LinearGradientFill(gradient: gradient, angle: 90)
+        
         return dataSet
     }
+    
+    private func recommendedChartDataSetFor(_ entry: ChartDataEntry?) -> LineChartDataSet {
+        guard let entry else { return .init() }
+        
+        let entries = [
+            entry,
+            ChartDataEntry(
+                x: entry.x + 5260000,
+                y: Double(lblRecommendation.text ?? "0") ?? entry.y
+            )
+        ]
+        
+        let dataSet = LineChartDataSet(entries: entries, label: "")
+        dataSet.mode = .horizontalBezier
+
+        dataSet.lineWidth = 3
+        dataSet.lineDashPhase = CGFloat(2.0)
+        dataSet.lineDashLengths = [2, 3]
+        dataSet.setColor(HRThemeColor.blue)
+
+        dataSet.drawCirclesEnabled = true
+        
+        // Change value color
+        dataSet.valueTextColor = HRThemeColor.blue
+        dataSet.valueColors = [.clear, HRThemeColor.blue]
+        dataSet.valueFont = HRFonts.medium16
+        
+        // Set value formatter for showing values up to 1 decimal place
+        dataSet.valueFormatter = CustomValueFormatter()
+        
+        return dataSet
+    }
+
     
     private func setupChart(values: [Point]) {
         viewChart.addSubview(lineChartView)
@@ -144,7 +179,10 @@ final class ChartsVC: BaseVC {
         ])
         
         let entries = chartEntries(values)
-        let data = LineChartData(dataSet: lineChartDataSet(entries))
+        let data = LineChartData(dataSets: [
+            lineChartDataSet(entries),
+            recommendedChartDataSetFor(entries.last)
+        ])
         lineChartView.data = data
     }
 }
