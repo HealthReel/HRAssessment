@@ -40,7 +40,7 @@ extension BasePageViewController: HRPageViewControllerDataSource, UIPageViewCont
         }
     }
 
-    public func pageViewController(_ pageViewController: UIPageViewController,
+    func pageViewController(_ pageViewController: UIPageViewController,
                             didFinishAnimating finished: Bool,
                             previousViewControllers: [UIViewController],
                             transitionCompleted completed: Bool) {

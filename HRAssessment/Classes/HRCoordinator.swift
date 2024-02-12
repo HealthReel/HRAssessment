@@ -4,18 +4,34 @@ public final class HRCoordinator {
     let navigationController: UINavigationController
     let credentials: HRCredentials
     
-    public init(_ navigationController: UINavigationController, credentials: HRCredentials) {
+    public init(_ navigationController: UINavigationController,
+                credentials: HRCredentials) {
         self.navigationController = navigationController
         self.credentials = credentials
+        
         loadFonts()
     }
 
-    public func startAssessment(user: UserProfile) {
-        let scene = BasePageViewController.instantiate(from: .HealthReel)
-        scene.controller = BasePageController(userProfile: user, credentials: credentials)
+    public func startAssessment(userReferenceID: String,
+                                previousReport: PreviousReportDetails? = nil) {
+        let scene = UserProfileVC.instantiate(from: .HealthReel)
+        scene.user = UserProfile(userReferenceID: userReferenceID)
+        scene.nextButtonAction = {
+            self.startAssessment(user: scene.user,
+                                 previousReport: previousReport)
+        }
         navigationController.pushViewController(scene, animated: true)
     }
-
+    
+    public func startAssessment(user: UserProfile,
+                                previousReport: PreviousReportDetails? = nil) {
+        let scene = BasePageViewController.instantiate(from: .HealthReel)
+        scene.controller = BasePageController(userProfile: user,
+                                              credentials: credentials,
+                                              previousReport: previousReport)
+        navigationController.pushViewController(scene, animated: true)
+    }
+    
     public func showCharts(data: [ChartData]) {
         let chartsScene = ChartsVC.instantiate(from: .HealthReel)
         chartsScene.dataSource = data
@@ -30,7 +46,7 @@ public final class HRCoordinator {
 }
 
 extension HRCoordinator {
-    func loadFonts() {
+    private func loadFonts() {
       let fontNames = HRFonts.allCases.map { $0.fontname }
       for fontName in fontNames {
         loadFont(withName: fontName)

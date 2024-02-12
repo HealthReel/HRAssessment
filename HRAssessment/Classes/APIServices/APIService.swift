@@ -55,6 +55,13 @@ extension APIService {
         if let preEclampsia = requestObj.preEclampsia {
             parameters["preEclampsia"] = preEclampsia.string
         }
+        
+        if let lastReport = requestObj.lastReport {
+            parameters["lastHealthScore"] = "\(lastReport.healthScore)"
+            parameters["lastBodyFatPercentage"] = "\(lastReport.bodyFatPercentage)"
+            parameters["lastBodyWeight"] = "\(lastReport.bodyWeight)"
+            parameters["lastCBMI"] = "\(lastReport.cBMI)"
+        }
 
         for field in parameters {
             multipart.add(key: field.key, value: field.value)

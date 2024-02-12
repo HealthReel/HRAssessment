@@ -33,35 +33,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="hHD-VH-VYi">
-                                <rect key="frame" x="73" y="231" width="229.5" height="205"/>
+                                <rect key="frame" x="108.5" y="258.5" width="158" height="150"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-D6-wKU" userLabel="Start Assessment Female">
-                                        <rect key="frame" x="0.0" y="0.0" width="229.5" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-D6-wKU">
+                                        <rect key="frame" x="0.0" y="0.0" width="158" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="0zX-If-0zG"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Start Assessment - Female"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Start Assessment - Female"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Start Assessment"/>
                                         <connections>
-                                            <action selector="startAssessmentFemaleTapped" destination="DHi-16-Ld2" eventType="touchUpInside" id="EQj-a1-md2"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2K7-Do-Hhl">
-                                        <rect key="frame" x="0.0" y="55" width="229.5" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="sEI-M9-3uH"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Start Assessment - Male"/>
-                                        <connections>
-                                            <action selector="startAssessmentMaleTapped" destination="DHi-16-Ld2" eventType="touchUpInside" id="Be6-QQ-4EQ"/>
+                                            <action selector="startAssessmentTapped" destination="DHi-16-Ld2" eventType="touchUpInside" id="dDF-OD-oIi"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kz-BX-b8g">
-                                        <rect key="frame" x="0.0" y="110" width="229.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="55" width="158" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="KoI-Ms-yPv"/>
@@ -73,7 +61,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gh2-wo-Pb2">
-                                        <rect key="frame" x="0.0" y="165" width="229.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="110" width="158" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="vtV-5M-m7g"/>
@@ -98,8 +86,7 @@
                     <connections>
                         <outlet property="btnChart" destination="9kz-BX-b8g" id="uda-xF-OZ1"/>
                         <outlet property="btnReport" destination="gh2-wo-Pb2" id="ZEt-el-m2o"/>
-                        <outlet property="startAssessmentFemale" destination="8UT-D6-wKU" id="bBs-np-jDx"/>
-                        <outlet property="startAssessmentMale" destination="2K7-Do-Hhl" id="hJB-14-71L"/>
+                        <outlet property="startAssessment" destination="8UT-D6-wKU" id="nWU-4e-xdR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yU0-XM-7a4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

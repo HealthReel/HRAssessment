@@ -1,6 +1,6 @@
 import UIKit
 
-public class BaseVC: UIViewController {
+class BaseVC: UIViewController {
     
     // MARK: Properties
     private var offsetY: CGFloat = {
@@ -53,12 +53,12 @@ public class BaseVC: UIViewController {
     }()
     
     // MARK: Life Cycle
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         createNavigationBar()
     }
     
-    public override var preferredStatusBarStyle: UIStatusBarStyle {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
     

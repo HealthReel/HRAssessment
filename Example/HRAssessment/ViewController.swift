@@ -9,13 +9,12 @@
 import UIKit
 import HRAssessment
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     // MARK: IBOutlets
     @IBOutlet weak var btnChart: UIButton!
     @IBOutlet weak var btnReport: UIButton!
-    @IBOutlet weak var startAssessmentFemale: UIButton!
-    @IBOutlet weak var startAssessmentMale: UIButton!
+    @IBOutlet weak var startAssessment: UIButton!
     
     var coordinator: HRCoordinator? {
         guard let navigationController else { return nil }
@@ -27,24 +26,13 @@ class ViewController: UIViewController {
     }
     
     // MARK: IBActions
-    @IBAction func startAssessmentMaleTapped() {
-        let user = UserProfile(userReferenceID: "000",
-                               dob: 628385125,
-                               gender: .male,
-                               height: 169,
-                               diabetic: true,
-                               race: .asian)
-        coordinator?.startAssessment(user: user)
-    }
-    
-    @IBAction func startAssessmentFemaleTapped() {
-        let user = UserProfile(userReferenceID: "000",
-                               dob: 628385125,
-                               gender: .female,
-                               height: 169,
-                               diabetic: true,
-                               race: .asian)
-        coordinator?.startAssessment(user: user)
+    @IBAction func startAssessmentTapped() {
+        let previousReport = PreviousReportDetails(healthScore: 90,
+                                                   bodyFatPercentage: 23,
+                                                   bodyWeight: 210,
+                                                   cBMI: 29)
+        coordinator?.startAssessment(userReferenceID: "000",
+                                     previousReport: previousReport)
     }
     
     @IBAction func viewChartTapped() {

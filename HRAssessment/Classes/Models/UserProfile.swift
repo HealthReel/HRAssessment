@@ -2,64 +2,65 @@ import Foundation
 
 public struct UserProfile {
     let userReferenceID: String
-    let dob: Int
-    let gender: Gender
-    let height: CGFloat
+    var dob: Int
+    var gender: Gender
+    var height: CGFloat
     var diabetic: Bool
     var race: Race
-    var lastHealthScore: CGFloat?
-    var lastBodyFatPercentage: CGFloat?
-    var lastBodyWeight: CGFloat?
-    var lastCBMI: CGFloat?
-
-    var json: [String: Any] {
-        var json: [String: Any] = [
-            "reportType": "2",
-            "userReferenceID": userReferenceID,
-            "dob": dob,
-            "gender": gender.rawValue,
-            "height": height,
-            "diabetic": diabetic,
-            "race": race
-        ]
-
-        if let lastBodyFatPercentage {
-            json["lastBodyFatPercentage"] = lastBodyFatPercentage
-        }
-        if let lastHealthScore {
-            json["lastHealthScore"] = lastHealthScore
-        }
-        if let lastBodyWeight {
-            json["lastBodyWeight"] = lastBodyWeight
-        }
-        if let lastCBMI {
-            json["lastCBMI"] = lastCBMI
-        }
-        
-        return json
-    }
     
-    public init(userReferenceID: String, dob: Int, gender: Gender, height: CGFloat, diabetic: Bool, race: Race, lastHealthScore: CGFloat? = nil, lastBodyFatPercentage: CGFloat? = nil, lastBodyWeight: CGFloat? = nil, lastCBMI: CGFloat? = nil) {
+    public init(userReferenceID: String,
+                dob: Int = .zero,
+                gender: Gender = .female,
+                height: CGFloat = .nan,
+                diabetic: Bool = false,
+                race: Race = .Other) {
         self.userReferenceID = userReferenceID
         self.dob = dob
         self.gender = gender
         self.height = height
         self.diabetic = diabetic
         self.race = race
-        self.lastHealthScore = lastHealthScore
-        self.lastBodyFatPercentage = lastBodyFatPercentage
-        self.lastBodyWeight = lastBodyWeight
-        self.lastCBMI = lastCBMI
     }
 }
 
 public extension UserProfile {
-    enum Race: String {
-        case asian
+    enum Race: Int, CaseIterable {
+      case White = 1
+      case Black
+      case Hispanic
+      case Asian
+      case Multiracial
+      case Other
+        
+        var stringValue: String {
+            return switch self {
+            case .White: "White"
+            case .Black: "Black"
+            case .Hispanic: "Hispanic"
+            case .Asian: "Asian"
+            case .Multiracial: "Multiracial"
+            case .Other: "Other"
+            }
+        }
+        
+        public init(stringValue: String) {
+            self = switch stringValue {
+            case "White": .White
+            case "Black": .Black
+            case "Hispanic": .Hispanic
+            case "Asian": .Asian
+            case "Multiracial": .Multiracial
+            default: .Other
+            }
+        }
     }
 
-    enum Gender: String {
+    enum Gender: String, CaseIterable {
         case male = "male"
         case female = "female"
+        
+        public static var allCases: [Self] {
+            [.male, .female]
+        }
     }
 }

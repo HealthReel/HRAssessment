@@ -5,7 +5,7 @@ struct MultipartRequest {
     private let separator: String = "\r\n"
     private var data: Data
 
-    public init(boundary: String = UUID().uuidString) {
+    init(boundary: String = UUID().uuidString) {
         self.boundary = boundary
         self.data = .init()
     }
@@ -22,7 +22,7 @@ struct MultipartRequest {
         "Content-Disposition: form-data; name=\"\(key)\""
     }
 
-    public mutating func add(
+    mutating func add(
         key: String,
         value: String
     ) {
@@ -32,7 +32,7 @@ struct MultipartRequest {
         data.append(value + separator)
     }
 
-    public mutating func add(
+    mutating func add(
         key: String,
         fileName: String,
         fileData: Data
@@ -44,11 +44,11 @@ struct MultipartRequest {
         appendSeparator()
     }
 
-    public var httpContentTypeHeaderValue: String {
+    var httpContentTypeHeaderValue: String {
         "multipart/form-data; boundary=\(boundary)"
     }
 
-    public var httpBody: Data {
+    var httpBody: Data {
         var bodyData = data
         bodyData.append("--\(boundary)--")
         return bodyData

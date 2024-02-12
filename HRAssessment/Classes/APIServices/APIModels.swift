@@ -18,6 +18,20 @@ public struct HRCredentials {
     }
 }
 
+public struct PreviousReportDetails {
+    let healthScore: Double
+    let bodyFatPercentage: Double
+    let bodyWeight: Double
+    let cBMI: Double
+    
+    public init(healthScore: Double, bodyFatPercentage: Double, bodyWeight: Double, cBMI: Double) {
+        self.healthScore = healthScore
+        self.bodyFatPercentage = bodyFatPercentage
+        self.bodyWeight = bodyWeight
+        self.cBMI = cBMI
+    }
+}
+
 struct AccessTokenResponse: Decodable {
     let message: String
     let data: [String: AccessToken]
@@ -29,7 +43,7 @@ struct HRReportRequest {
     var height: Double
     var gender: String
     var diabetic: Bool
-    var race: String
+    var race: Int
 
     var sdoh: JSONArray?
     var anxietyScore: Int?
@@ -41,6 +55,7 @@ struct HRReportRequest {
     var selfHealthReadiness: JSONArray
     var activityLevel: Int
     var weight: Double
+    var lastReport: PreviousReportDetails?
     
     init(user: UserProfile, 
          sdoh: JSONArray? = nil,
@@ -50,7 +65,8 @@ struct HRReportRequest {
          preEclampsia: JSONDictionary? = nil,
          selfHealthReadiness: JSONArray,
          activityLevel: Int,
-         weight: Double) {
+         weight: Double,
+         lastReport: PreviousReportDetails? = nil) {
         self.userReferenceID = user.userReferenceID
         self.dobTimestamp = user.dob
         self.height = user.height
@@ -65,5 +81,6 @@ struct HRReportRequest {
         self.selfHealthReadiness = selfHealthReadiness
         self.activityLevel = activityLevel
         self.weight = weight
+        self.lastReport = lastReport
     }
 }

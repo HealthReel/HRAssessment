@@ -20,6 +20,7 @@ final class BasePageController {
     
     let userProfile: UserProfile
     let credentials: HRCredentials
+    var previousReport: PreviousReportDetails?
 
     var currentPageIndex: Int = 0
     var currentPageType: PageType = .socialNeeds {
@@ -38,9 +39,12 @@ final class BasePageController {
     }
 
     // MARK: Initializer
-    init(userProfile: UserProfile, credentials: HRCredentials) {
+    init(userProfile: UserProfile, 
+         credentials: HRCredentials,
+         previousReport: PreviousReportDetails? = nil) {
         self.userProfile = userProfile
         self.credentials = credentials
+        self.previousReport = previousReport
     }
     
     // MARK: Functions
@@ -235,6 +239,10 @@ extension BasePageController {
         
         if preEclampsiaResponses.isEmpty == false {
             request.preEclampsia = preEclampsiaResponses.json
+        }
+        
+        if let previousReport {
+            request.lastReport = previousReport
         }
         
         return request
