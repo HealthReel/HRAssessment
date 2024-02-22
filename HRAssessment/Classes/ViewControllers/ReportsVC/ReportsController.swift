@@ -58,12 +58,13 @@ final class ReportsController {
     }
     
     func sectionSubTitle(section: Int) -> String {
+        let lastUpdatedOn = String(localizedKey: "report.last_updated_on")
         guard let date = iso8601DateFormatter.date(from: currentReport.createdAt) else {
-            return "Last updated on \(currentReport.createdAt)"
+            return "\(lastUpdatedOn) \(currentReport.createdAt)"
         }
         
         let formattedDate = dateFormatterMMMdyyyy.string(from: date)
-        return "Last updated on \(formattedDate)"
+        return "\(lastUpdatedOn) \(formattedDate)"
     }
     
     func dataPoints(section: Int) -> [CategorisedReport.DataPoint] {

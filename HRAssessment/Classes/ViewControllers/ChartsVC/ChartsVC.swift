@@ -71,7 +71,7 @@ final class ChartsVC: BaseVC {
     }
     
     private func setupViews() {
-        navBarTitleLabel.text = "Charts"
+        navBarTitleLabel.text = String(localizedKey: "nav.title.charts")
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsSelection = true

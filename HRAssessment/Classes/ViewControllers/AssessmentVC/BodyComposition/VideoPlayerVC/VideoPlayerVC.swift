@@ -42,9 +42,14 @@ final class VideoPlayerVC: BaseVC {
         super.viewDidLoad()
 
         navRightButton.isHidden = false
-        navRightButton.setAttributedTitle(NSAttributedString(string: "Skip",
-                                                            attributes: [.font: HRFonts.navigationTitle]),
-                                         for: .normal)
+        let skipTitle = String(localizedKey: "nav.button.skip")
+        navRightButton.setAttributedTitle(
+            NSAttributedString(string: skipTitle,
+                               attributes: [
+                                .font: HRFonts.navigationTitle
+                               ]),
+            for: .normal
+        )
         
         navBarTitleLabel.text = String(localizedKey: "nav.title.how_to_record")
         view.bringSubviewToFront(viewContainer)

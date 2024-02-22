@@ -31,11 +31,26 @@ extension SelfHealthReadinessResponses {
 extension SelfHealthReadinessQuestion {
     static var `default`: [SelfHealthReadinessQuestion] {
         return [
-            SelfHealthReadinessQuestion("1", "Are you ready and committed to adopt a routine that will improve your long-term health?"),
-            SelfHealthReadinessQuestion("2", "How knowledgeable are you in regard to caloric intake, caloric deicit, and macronutrient information?"),
-            SelfHealthReadinessQuestion("3", "Do you understand exercise requirement when it comes to long-term health benefits. Specifically exercise frequency, duration and intensity?"),
-            SelfHealthReadinessQuestion("4", "How knowledgeable are you when it comes to sleep and recovery?"),
-            SelfHealthReadinessQuestion("5", "The most important variable in our long-term health is support. Do you feel mentally, emotionally and physically supported?"),
+            SelfHealthReadinessQuestion(
+                "1",
+                String(localizedKey: "self_health_readiness.q1")
+            ),
+            SelfHealthReadinessQuestion(
+                "2",
+                String(localizedKey: "self_health_readiness.q2")
+            ),
+            SelfHealthReadinessQuestion(
+                "3",
+                String(localizedKey: "self_health_readiness.q3")
+            ),
+            SelfHealthReadinessQuestion(
+                "4",
+                String(localizedKey: "self_health_readiness.q4")
+            ),
+            SelfHealthReadinessQuestion(
+                "5",
+                String(localizedKey: "self_health_readiness.q5")
+            ),
         ]
     }
 }

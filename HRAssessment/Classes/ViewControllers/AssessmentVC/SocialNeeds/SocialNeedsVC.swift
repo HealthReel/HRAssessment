@@ -78,7 +78,3 @@ extension SocialNeedsVC: UITableViewDataSource, UITableViewDelegate {
         tableView.reloadData()
     }
 }
-
-extension String.LocalizationValue {
-    
-}

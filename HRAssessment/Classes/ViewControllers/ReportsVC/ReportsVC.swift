@@ -21,7 +21,7 @@ final class ReportVC: BaseVC {
         view.backgroundColor = HRThemeColor.white
         view.bringSubviewToFront(viewContainer)
 
-        navBarTitleLabel.text = "Reports"
+        navBarTitleLabel.text = String(localizedKey: "nav.title.reports")
         titleHeader.font = HRFonts.regular16
 
         navRightButton.isHidden = false
@@ -168,7 +168,6 @@ extension ReportVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
 
 // MARK: Share PDF Functions
 extension ReportVC {
-    /// Share PDF
     private func sharePDF(pdfURL: URL) {
         // Create an activity view controller with the PDF URL
         let activityViewController = UIActivityViewController(activityItems: [pdfURL], applicationActivities: nil)

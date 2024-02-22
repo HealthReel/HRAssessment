@@ -48,7 +48,7 @@ extension CategorisedReport {
 
 extension CategorisedReport {
     static var overallHealthStatus: Self {
-        .init(title: "Overall Health Status",
+        .init(title: String(localizedKey: "report.title.overall_health_status"),
               dataPoints: [
                 .completeHealthScore,
                 .depression,
@@ -60,7 +60,7 @@ extension CategorisedReport {
     }
     
     static var bodyCompositionSummary: Self {
-        .init(title: "Body Composition Summary",
+        .init(title: String(localizedKey: "report.title.body_composition_summary"),
               dataPoints: [
                 .correctedBMI,
                 .bodyFatPercentage,
@@ -85,7 +85,7 @@ extension CategorisedReport {
             .dailyCaloricChange
         }
         
-        return .init(title: "Metabolism And Caloric Intake",
+        return .init(title: String(localizedKey: "report.title.metabolic"),
                      dataPoints: [
                         activityMetabolismNutrition.projectedWeeklyFatLoss < 0 ? .projectedWeeklyFatLoss : .projectedWeeklyFatGain,
                         .activeMetabolicRate,
@@ -99,7 +99,7 @@ extension CategorisedReport {
     }
     
     static var socialRisks: Self {
-        .init(title: "Social Risks",
+        .init(title: String(localizedKey: "report.title.social_risks"),
               dataPoints: [
                 .housing,
                 .food,

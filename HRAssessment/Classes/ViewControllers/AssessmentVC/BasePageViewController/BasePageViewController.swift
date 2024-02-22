@@ -57,11 +57,10 @@ final class BasePageViewController: BaseVC {
         if controller.currentPageType == .dassDescription {
             let infoScene = InformationVC.instantiate(from: .HealthReel)
             infoScene.descriptionFont = HRFonts.regular14
-            infoScene.dataPoint = .init(title: "DASS-21", definition: """
-The Depression, Anxiety and Stress Scale - 21 Items (DASS-21) is a set of three self-report scales designed to measure the emotional states of depression, anxiety and stress. The DASS-21 is based on a dimensional rather than a categorical conception of psychological disorder. The assumption on which the DASS-21 development was based (and which was confirmed by the research data) is that the differences between the depression, anxiety and the stress experienced by normal subjects and clinical populations are essentially differences of degree. The DASS-21 therefore has no direct implications for the allocation of patients to discrete diagnostic categories postulated in classificatory systems such as the DSM and ICD.
-
-The DASS-21 should not be used to replace a face to face clinical interview. If you are experiencing significant emotional difficulties you should contact your GP for a referral to a qualified professional.
-""", valueKey: "")
+            infoScene.dataPoint = .init(
+                title: String(localizedKey: "dass.description.title"),
+                definition: String(localizedKey: "dass.description"),
+                valueKey: "")
             present(infoScene, animated: true)
         }
     }

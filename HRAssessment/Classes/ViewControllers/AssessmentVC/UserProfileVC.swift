@@ -61,11 +61,15 @@ final class UserProfileVC: BaseVC {
 
         nextButton.makeCircular()
         nextButton.backgroundColor = HRThemeColor.blue
-        nextButton.setAttributedTitle(.init(string: "Next", attributes: [
-            .font: HRFonts.heading, .foregroundColor: UIColor.white
+        let nextTitle = String(localizedKey: "userprofile.button.next")
+        nextButton.setAttributedTitle(
+            .init(string: nextTitle,
+                  attributes: [
+                    .font: HRFonts.heading,
+                    .foregroundColor: UIColor.white
         ]), for: .normal)
         
-        navBarTitleLabel.text = "Health Assessment"
+        navBarTitleLabel.text = String(localizedKey: "nav.title.user_profile")
         setupFields()
     }
         
@@ -87,7 +91,7 @@ final class UserProfileVC: BaseVC {
             $0?.delegate = self
         }
         
-        dobTextfield.placeholder = "Date of Birth"
+        dobTextfield.placeholder = String(localizedKey: "userprofile.dateofbirth")
         dobTextfield.inputView = {
             let picker = UIDatePicker()
             picker.tintColor = HRThemeColor.white
@@ -98,17 +102,17 @@ final class UserProfileVC: BaseVC {
             return picker
         }()
                 
-        genderTextfield.placeholder = "Gender"
+        genderTextfield.placeholder = String(localizedKey: "userprofile.gender")
         genderTextfield.inputView = genderTextfieldPicker
 
-        heightTextfield.placeholder = "Height (inches)"
+        heightTextfield.placeholder = String(localizedKey: "userprofile.height")
         heightTextfield.inputView = heightTextfieldPicker
         heightTextfieldPicker.selectRow(165, inComponent: 0, animated: true)
         
-        diabeticTextfield.placeholder = "Are you Diabetic?"
+        diabeticTextfield.placeholder = String(localizedKey: "userprofile.diabetic")
         diabeticTextfield.inputView = diabeticTextfieldPicker
 
-        raceTextfield.placeholder = "Racial Background"
+        raceTextfield.placeholder = String(localizedKey: "userprofile.race")
         raceTextfield.inputView = raceTextfieldPicker
     }
     
@@ -119,29 +123,29 @@ final class UserProfileVC: BaseVC {
     
     private func validate() -> Bool {
         guard let dob = dobTextfield.text, !dob.isEmptyStr else {
-            dobTextfield.showError(message: "Invalid Date of Birth")
+            showError(dobTextfield)
             return false
         }
         
         guard let genderString = genderTextfield.text,
               let gender = UserProfile.Gender(rawValue: genderString.lowercased()) else {
-            genderTextfield.showError(message: "Invalid Gender")
+            showError(genderTextfield)
             return false
         }
         
         guard let heightString = heightTextfield.text,
               let height = NumberFormatter().number(from: heightString)?.floatValue else {
-            heightTextfield.showError(message: "Invalid Height")
+            showError(heightTextfield)
             return false
         }
         
         guard let diabetic = diabeticTextfield.text, !diabetic.isEmptyStr else {
-            diabeticTextfield.showError(message: "Invalid Diabetic Status")
+            showError(diabeticTextfield)
             return false
         }
         
         guard let raceString = raceTextfield.text, !raceString.isEmptyStr else {
-            raceTextfield.showError(message: "Invalid Race")
+            showError(raceTextfield)
             return false
         }
                 
@@ -158,14 +162,14 @@ final class UserProfileVC: BaseVC {
         toolbar.sizeToFit()
         
         let previousBtn = UIBarButtonItem(
-            title: "Previous",
+            title: String(localizedKey: "userprofile.barbutton.previous"),
             style: .plain,
             target: nil,
             action: #selector(previousBtnTapped)
         )
 
         let nextBtn = UIBarButtonItem(
-            title: "Next",
+            title: String(localizedKey: "userprofile.barbutton.next"),
             style: .done,
             target: nil,
             action: #selector(nextBtnTapped)
@@ -188,6 +192,13 @@ extension UserProfileVC: UITextFieldDelegate {
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeTextfield = textField
+        
+        if let picker = activeTextfield.inputView as? UIPickerView {
+            let selectedRow = picker.selectedRow(inComponent: 0)
+            pickerView(picker, didSelectRow: selectedRow, inComponent: 0)
+        } else if let picker = activeTextfield.inputView as? UIDatePicker {
+            onDateValueChanged(picker)
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField,
@@ -195,23 +206,23 @@ extension UserProfileVC: UITextFieldDelegate {
         switch textField {
         case dobTextfield:
             if let dob = dobTextfield.text, dob.isEmptyStr {
-                dobTextfield.showError(message: "Invalid Date of Birth")
+                showError(dobTextfield)
             }
         case genderTextfield:
             if let gender = genderTextfield.text, gender.isEmptyStr {
-                genderTextfield.showError(message: "Invalid Gender")
+                showError(genderTextfield)
             }
         case heightTextfield:
             if let height = heightTextfield.text, height.isEmptyStr {
-                heightTextfield.showError(message: "Invalid Height")
+                showError(heightTextfield)
             }
         case diabeticTextfield:
             if let diabetic = diabeticTextfield.text, diabetic.isEmptyStr {
-                diabeticTextfield.showError(message: "Invalid Diabetic Status")
+                showError(diabeticTextfield)
             }
         case raceTextfield:
             if let race = raceTextfield.text, race.isEmptyStr {
-                raceTextfield.showError(message: "Invalid Race")
+                showError(raceTextfield)
             }
         default:
             break
@@ -256,6 +267,34 @@ extension UserProfileVC: UITextFieldDelegate {
         user.dob = Int(datePicker.date.timeIntervalSince1970)
         let dateString = dateFormatter.string(from: datePicker.date)
         dobTextfield.text = dateString
+    }
+    
+    private func showError(_ textfield: UITextField) {
+        switch textfield {
+        case dobTextfield:
+            dobTextfield.showError(
+                message: String(localizedKey: "userprofile.error.dob")
+            )
+        case genderTextfield:
+            genderTextfield.showError(
+                message: String(localizedKey: "userprofile.error.gender")
+            )
+        case heightTextfield:
+            heightTextfield.showError(
+                message: String(localizedKey: "userprofile.error.height")
+            )
+        case diabeticTextfield:
+            diabeticTextfield.showError(
+                message: String(localizedKey: "userprofile.error.diabetic")
+            )
+        case raceTextfield:
+            raceTextfield.showError(
+                message: String(localizedKey: "userprofile.error.race")
+            )
+        default:
+            break
+        }
+        
     }
 }
 

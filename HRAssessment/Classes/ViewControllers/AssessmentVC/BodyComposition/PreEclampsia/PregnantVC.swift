@@ -41,14 +41,20 @@ final class PregnantVC: UIViewController {
             .font: HRFonts.medium16, .foregroundColor: HRThemeColor.white
         ]
         
-        btnYes.setAttributedTitle(.init(string: "Yes", attributes: normalAttr),
+        let yesTitle = String(localizedKey: "pregnant.yes")
+        let noTitle = String(localizedKey: "pregnant.no")
+        btnYes.setAttributedTitle(.init(string: yesTitle,
+                                        attributes: normalAttr),
                                   for: .normal)
-        btnNo.setAttributedTitle(.init(string: "No", attributes: normalAttr),
+        btnNo.setAttributedTitle(.init(string: noTitle,
+                                       attributes: normalAttr),
                                  for: .normal)
         
-        btnYes.setAttributedTitle(.init(string: "Yes", attributes: selectedAttr),
+        btnYes.setAttributedTitle(.init(string: yesTitle,
+                                        attributes: selectedAttr),
                                   for: .selected)
-        btnNo.setAttributedTitle(.init(string: "No", attributes: selectedAttr),
+        btnNo.setAttributedTitle(.init(string: noTitle,
+                                       attributes: selectedAttr),
                                  for: .selected)
         
         [btnYes, btnNo].forEach {

@@ -10,24 +10,24 @@ enum ActivityLevel: Int, CaseIterable {
 
 extension ActivityLevel {
     var text: (title: String, subtitle: String) {
-        switch self {
-        case .sedentary: return
+        return switch self {
+        case .sedentary:
             ("Sedentary",
              "Little or no exrecise, desk job"
             )
-        case .lightlyActive: return
+        case .lightlyActive:
             ("Lightly Active",
              "Exercise 30 minutes or less 1 to 3 times a week"
             )
-        case .moderatelyActive: return
+        case .moderatelyActive:
             ("Moderately Active",
              "Exercise 30 minutes or less 3-5 times a week"
             )
-        case .veryActive: return
+        case .veryActive:
             ("Very Active",
              "Exercising 60 minutes or less 3-5 days a week"
             )
-        case .extremelyActive: return
+        case .extremelyActive:
             ("Extremely Active",
              "Professional athelete or individuals doing 2 workouts a day or workouts 90 min+ 6 days a week"
             )

@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "button.start" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        }
+      }
+    },
     "camera.alert.ok" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -30,6 +41,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reshoot"
+          }
+        }
+      }
+    },
+    "camera.failure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failure"
           }
         }
       }
@@ -111,6 +133,39 @@
         }
       }
     },
+    "camera.report_generated_successfully" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report Generated Successfully"
+          }
+        }
+      }
+    },
+    "camera.report_generation_failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report Generation Failed"
+          }
+        }
+      }
+    },
+    "camera.retry" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retry"
+          }
+        }
+      }
+    },
     "camera.start_recording" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -122,6 +177,17 @@
         }
       }
     },
+    "camera.success" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Success"
+          }
+        }
+      }
+    },
     "camera.watch_again" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -129,6 +195,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Watch Again"
+          }
+        }
+      }
+    },
+    "dass.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Depression, Anxiety and Stress Scale - 21 Items (DASS-21) is a set of three self-report scales designed to measure the emotional states of depression, anxiety and stress. The DASS-21 is based on a dimensional rather than a categorical conception of psychological disorder. The assumption on which the DASS-21 development was based (and which was confirmed by the research data) is that the differences between the depression, anxiety and the stress experienced by normal subjects and clinical populations are essentially differences of degree. The DASS-21 therefore has no direct implications for the allocation of patients to discrete diagnostic categories postulated in classificatory systems such as the DSM and ICD.\n\nThe DASS-21 should not be used to replace a face to face clinical interview. If you are experiencing significant emotional difficulties you should contact your GP for a referral to a qualified professional."
+          }
+        }
+      }
+    },
+    "dass.description.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DASS-21"
           }
         }
       }
@@ -364,6 +452,17 @@
         }
       }
     },
+    "nav.button.skip" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        }
+      }
+    },
     "nav.title.activity_level" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -382,6 +481,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Body Weight"
+          }
+        }
+      }
+    },
+    "nav.title.charts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Charts"
           }
         }
       }
@@ -419,6 +529,17 @@
         }
       }
     },
+    "nav.title.reports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reports"
+          }
+        }
+      }
+    },
     "nav.title.self_health_readiness" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -441,6 +562,17 @@
         }
       }
     },
+    "nav.title.user_profile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Health Assessment"
+          }
+        }
+      }
+    },
     "nav.title.video_recording" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -448,6 +580,138 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Video Recording"
+          }
+        }
+      }
+    },
+    "pregnant.no" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        }
+      }
+    },
+    "pregnant.yes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        }
+      }
+    },
+    "report.last_updated_on" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last updated on"
+          }
+        }
+      }
+    },
+    "report.title.body_composition_summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Body Composition Summary"
+          }
+        }
+      }
+    },
+    "report.title.metabolic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metabolism And Caloric Intake"
+          }
+        }
+      }
+    },
+    "report.title.overall_health_status" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overall Health Status"
+          }
+        }
+      }
+    },
+    "report.title.social_risks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Social Risks"
+          }
+        }
+      }
+    },
+    "self_health_readiness.q1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you ready and committed to adopt a routine that will improve your long-term health?"
+          }
+        }
+      }
+    },
+    "self_health_readiness.q2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How knowledgeable are you in regard to caloric intake, caloric deicit, and macronutrient information?"
+          }
+        }
+      }
+    },
+    "self_health_readiness.q3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you understand exercise requirement when it comes to long-term health benefits. Specifically exercise frequency, duration and intensity?"
+          }
+        }
+      }
+    },
+    "self_health_readiness.q4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How knowledgeable are you when it comes to sleep and recovery?"
+          }
+        }
+      }
+    },
+    "self_health_readiness.q5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The most important variable in our long-term health is support. Do you feel mentally, emotionally and physically supported?"
           }
         }
       }
@@ -877,6 +1141,149 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "UTILITIES"
+          }
+        }
+      }
+    },
+    "userprofile.barbutton.next" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
+    },
+    "userprofile.barbutton.previous" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous"
+          }
+        }
+      }
+    },
+    "userprofile.button.next" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
+    },
+    "userprofile.dateofbirth" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date of Birth"
+          }
+        }
+      }
+    },
+    "userprofile.diabetic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you Diabetic?"
+          }
+        }
+      }
+    },
+    "userprofile.error.diabetic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid Diabetic Status"
+          }
+        }
+      }
+    },
+    "userprofile.error.dob" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid Date of Birth"
+          }
+        }
+      }
+    },
+    "userprofile.error.gender" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid Gender"
+          }
+        }
+      }
+    },
+    "userprofile.error.height" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid Height"
+          }
+        }
+      }
+    },
+    "userprofile.error.race" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid Race"
+          }
+        }
+      }
+    },
+    "userprofile.gender" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gender"
+          }
+        }
+      }
+    },
+    "userprofile.height" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Height (inches)"
+          }
+        }
+      }
+    },
+    "userprofile.race" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Racial Background"
           }
         }
       }

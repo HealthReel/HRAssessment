@@ -27,8 +27,11 @@ final class DassDescVC: UIViewController {
                                         radius: 15)
         btnStart.makeCircular()
         btnStart.backgroundColor = HRThemeColor.blue
-        btnStart.setAttributedTitle(.init(string: "Start", attributes: [
-            .font: HRFonts.medium16, .foregroundColor: UIColor.white
+        let startTitle = String(localizedKey: "button.start")
+        btnStart.setAttributedTitle(
+            .init(string: startTitle, attributes: [
+                .font: HRFonts.medium16,
+                .foregroundColor: UIColor.white
         ]), for: .normal)
     }
     

@@ -436,8 +436,10 @@ extension VideoRecordingVC: AVCaptureFileOutputRecordingDelegate {
 
 extension VideoRecordingVC: APIServiceDelegate {
     func reportGeneratedSuccessfully() {
-        let alert = UIAlertController(title: "Success",
-                                      message: "Report Generated Successfully",
+        let title = String(localizedKey: "camera.success")
+        let message = String(localizedKey: "camera.report_generated_successfully")
+        let alert = UIAlertController(title: title,
+                                      message: message,
                                       preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: String(localizedKey: "camera.alert.ok"),
@@ -453,11 +455,13 @@ extension VideoRecordingVC: APIServiceDelegate {
     }
     
     func reportGenerationFailed() {
-        let alert = UIAlertController(title: "Failure",
-                                      message: "Report Generation Failed",
+        let title = String(localizedKey: "camera.failure")
+        let message = String(localizedKey: "camera.report_generation_failed")
+        let alert = UIAlertController(title: title,
+                                      message: message,
                                       preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Retry",
+        alert.addAction(UIAlertAction(title: String(localizedKey: "camera.retry"),
                                       style: .default,
                                       handler: { [weak self] _ in
             guard let self, let url = self.videoFileUrl else { return }
