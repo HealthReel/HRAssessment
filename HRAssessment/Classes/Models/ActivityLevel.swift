@@ -10,7 +10,7 @@ enum ActivityLevel: Int, CaseIterable {
 
 extension ActivityLevel {
     var text: (title: String, subtitle: String) {
-        return switch self {
+        switch self {
         case .sedentary:
             ("Sedentary",
              "Little or no exrecise, desk job"

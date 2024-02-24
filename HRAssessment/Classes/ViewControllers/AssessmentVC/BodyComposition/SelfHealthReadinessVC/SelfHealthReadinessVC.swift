@@ -52,7 +52,7 @@ final class SelfHealthReadinessVC: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return switch indexPath.row {
+        switch indexPath.row {
         case 0: 156.0
         case 1: 174.0
         case 2: 192.0

@@ -7,7 +7,7 @@ enum RiskFactor {
     case preliminary, high, moderate, probable, low
     
     var title: String {
-        return switch self {
+        switch self {
         case .preliminary: "Are you pregnant?"
         case .high: "High Risk Factors"
         case .moderate: "Moderate Risk Factors"

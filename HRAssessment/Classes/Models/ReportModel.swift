@@ -82,7 +82,7 @@ public extension ReportModel {
     }
     
     func valueFor(_ key: String) -> Value? {
-        return switch key {
+        switch key {
         case "summary.healthScore": Value.number(summary.healthScore)
         case "summary.depressionCondition": Value.text(summary.depressionCondition)
         case "summary.anxietyCondition": Value.text(summary.anxietyCondition)
@@ -119,7 +119,7 @@ public extension ReportModel {
     }
     
     func trendFor(_ key: String) -> Trend? {
-        return switch key {
+        switch key {
         case "summary.healthScoreTrend": summary.healthScoreTrend
         case "summary.bodyFatPercentageTrend": summary.bodyFatPercentageTrend
         case "summary.CBMITrend": summary.CBMITrend

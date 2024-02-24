@@ -496,7 +496,7 @@ private extension VideoRecordingVC {
         case a12_recording_time
         
         func filename(for gender: UserProfile.Gender) -> String {
-            return switch self {
+            switch self {
             case .assessment_1: "assessment_1"
             case .assessment_2: "assessment_2"
             case .assessment_3: "assessment_3"
@@ -514,7 +514,7 @@ private extension VideoRecordingVC {
         }
         
         var screenPrompt: String {
-            return switch self {
+            switch self {
             case .assessment_1: 
                 String(localizedKey: "camera.instructions.1") 
                 //"Phone is under the window or a well lit room",

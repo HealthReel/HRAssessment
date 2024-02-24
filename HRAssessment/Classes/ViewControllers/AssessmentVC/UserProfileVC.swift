@@ -300,7 +300,7 @@ extension UserProfileVC: UITextFieldDelegate {
 
 extension UserProfileVC: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return switch pickerView {
+        switch pickerView {
         case genderTextfieldPicker,
             heightTextfieldPicker,
             diabeticTextfieldPicker,
@@ -313,7 +313,7 @@ extension UserProfileVC: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, 
                     numberOfRowsInComponent component: Int) -> Int {
-        return switch pickerView {
+        switch pickerView {
         case genderTextfieldPicker: UserProfile.Gender.allCases.count
         case heightTextfieldPicker: 200
         case diabeticTextfieldPicker: 2
@@ -325,7 +325,7 @@ extension UserProfileVC: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, 
                     titleForRow row: Int,
                     forComponent component: Int) -> String? {
-        return switch pickerView {
+        switch pickerView {
         case genderTextfieldPicker: UserProfile.Gender.allCases[row].rawValue.capitalized
         case heightTextfieldPicker: "\(Array(1...200)[row])"
         case diabeticTextfieldPicker: ["Yes", "No"][row]

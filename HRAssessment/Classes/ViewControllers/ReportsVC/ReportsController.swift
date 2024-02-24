@@ -74,7 +74,7 @@ final class ReportsController {
 
 extension CategorisedReport.DataPoint {
     func format(value: ReportModel.Value) -> String {
-        return switch value {
+        switch value {
         case .number(let double):
             format(value: double) + suffix
         case .text(let string):
@@ -83,7 +83,7 @@ extension CategorisedReport.DataPoint {
     }
     
     private func format(value: Double) -> String {
-        return switch self {
+        switch self {
         case .diabetes:
             value < 1.0 ? "<1" : (value > 99 ? ">99" : value.string)
         default:

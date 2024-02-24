@@ -33,7 +33,7 @@ public extension UserProfile {
       case Other
         
         var stringValue: String {
-            return switch self {
+            switch self {
             case .White: "White"
             case .Black: "Black"
             case .Hispanic: "Hispanic"
