@@ -207,7 +207,7 @@ final class VideoRecordingVC: BaseVC {
             audioPlayer?.prepareToPlay()
             audioPlayer?.play()
         } catch {
-            debugPrint("Error playing audio: \(error)")
+//            debugPrint("Error playing audio: \(error)")
         }
     }
     
@@ -277,9 +277,9 @@ final class VideoRecordingVC: BaseVC {
         guard let videoFileUrl else { return }
         do {
             try FileManager.default.removeItem(at: videoFileUrl)
-            debugPrint("Successfully deleted video at \(videoFileUrl)")
+//            debugPrint("Successfully deleted video at \(videoFileUrl)")
         } catch {
-            debugPrint("Error deleting video at \(videoFileUrl): \(error.localizedDescription)")
+//            debugPrint("Error deleting video at \(videoFileUrl): \(error.localizedDescription)")
         }
     }
     
@@ -430,7 +430,7 @@ extension VideoRecordingVC: AVCaptureFileOutputRecordingDelegate {
         }
         
         videoFileUrl = outputFileURL
-        debugPrint("Video recorded successfully to \(outputFileURL)")
+//        debugPrint("Video recorded successfully to \(outputFileURL)")
     }
 }
 

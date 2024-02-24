@@ -16,7 +16,7 @@ extension APIService {
                               requestObj: HRReportRequest,
                               delegate: APIServiceDelegate) async {
         guard let accessToken = await generateAccessToken() else {
-            debugPrint("Access Token could not be generated")
+//            debugPrint("Access Token could not be generated")
             return
         }
         
@@ -27,12 +27,12 @@ extension APIService {
         
         var parameters = [String: String]()
         parameters["userReferenceID"] = requestObj.userReferenceID
+        parameters["gender"] = requestObj.gender
         parameters["weight"] = "\(requestObj.weight)"
         parameters["dob"] = "\(requestObj.dobTimestamp)"
         parameters["diabetic"] = "\(requestObj.diabetic)"
         parameters["activityLevel"] = "\(requestObj.activityLevel)"
         parameters["height"] = "\(requestObj.height)"
-        parameters["gender"] = "\(requestObj.gender)"
         parameters["race"] = "\(requestObj.race)"
         parameters["selfHealthReadiness"] = requestObj.selfHealthReadiness.string
         
@@ -62,12 +62,13 @@ extension APIService {
             parameters["lastBodyWeight"] = "\(lastReport.bodyWeight)"
             parameters["lastCBMI"] = "\(lastReport.cBMI)"
         }
-
+        
         for field in parameters {
             multipart.add(key: field.key, value: field.value)
         }
         
         multipart.add(key: "video", fileName: "video", fileData: data)
+//        debugPrint(parameters)
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -82,12 +83,12 @@ extension APIService {
             Task { await HRAPILoader.stop() }
             
             guard let data = data else {
-                debugPrint(String(describing: error))
+//                debugPrint(String(describing: error))
                 delegate.reportGenerationFailed()
                 return
             }
             
-            debugPrint(String(data: data, encoding: .utf8)!)
+//            debugPrint(String(data: data, encoding: .utf8)!)
             delegate.reportGeneratedSuccessfully()
         }
 
@@ -131,7 +132,7 @@ extension Collection {
             let data = try JSONSerialization.data(withJSONObject: self, options: [])
             return String(data: data, encoding: .utf8)
         } catch {
-            debugPrint(error)
+//            debugPrint(error)
             return nil
         }
     }

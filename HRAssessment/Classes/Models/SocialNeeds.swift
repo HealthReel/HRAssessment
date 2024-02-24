@@ -39,9 +39,10 @@ extension SocialNeedsResponses {
         var questionDict: [[String: Any]] = []
         forEach { socialNeed, selectedOption in
             var dict: [String: Any] = [:]
+            dict["category"] = socialNeed.category
             dict["question"] = socialNeed.question
-            dict["answer"] = String(localizedKey: selectedOption.rawValue)
             dict["options"] = socialNeed.options.map { String(localizedKey: $0.rawValue) }
+            dict["answer"] = [String(localizedKey: selectedOption.rawValue)]
 
             questionDict.append(dict)
         }

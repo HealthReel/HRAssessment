@@ -57,7 +57,10 @@ extension PreEclampsiaResponses {
             guard let question = keys.first(where: { $0.type == riskFactor }) else {
                 continue
             }
-            let selected = Array(arrayLiteral: self[question])
+            
+            guard let selected = self[question]?.compactMap({ $0 }) else {
+                continue
+            }
 
             json[riskFactor.parameterName] = [
                 "selected": selected,

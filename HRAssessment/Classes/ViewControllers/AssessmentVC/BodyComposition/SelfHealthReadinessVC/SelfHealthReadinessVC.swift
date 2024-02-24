@@ -29,6 +29,10 @@ final class SelfHealthReadinessVC: UIViewController, UITableViewDataSource, UITa
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.flashScrollIndicators()
+        
+        delegate.selfHealthQuestions.forEach {
+            sliderValueUpdated(question: $0, value: 5)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

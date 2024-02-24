@@ -20,7 +20,7 @@ extension SelfHealthReadinessResponses {
             var dict: [String: Any] = [:]
             dict["question"] = selfHealthQuestion.question
             dict["answer"] = response
-            dict["options"] = (1...10).map({ $0.description })
+            dict["options"] = Array(1...10)
             questionDict.append(dict)
         }
 
